@@ -347,7 +347,7 @@ function filterProducts(products, filter) {
 //   show more cars
 function showmore(){
     filter.perpage[0]+=3;
-    filteredproduct=filterProducts(product["cars"], filter)    
+    filteredproduct=filterProducts(product, filter)    
     productview() ;
 }
 
