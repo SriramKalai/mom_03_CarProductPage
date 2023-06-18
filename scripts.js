@@ -430,9 +430,11 @@ function footercontent(){
 
 
     lastline.innerHTML=`
-            <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em] mt-[4px]">${pagedetail[1]["terms"][0]}</a>
-            <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][1]}</a>
-            <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][2]}</a>`
+            <div class="flex justify-between" >
+                <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][0]}</a>
+                <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][1]}</a>
+            </div>
+            <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em] mt-[30px]">${pagedetail[1]["terms"][2]}</a>`
 
 
 
