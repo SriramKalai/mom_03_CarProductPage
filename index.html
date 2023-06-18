@@ -85,6 +85,19 @@
                         <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">C A P A C I T Y</span>
                         <div id="carCapacities"></div>
                     </div>
+                    <div class="flex flex-col mt-[52px] pr-[20px]">
+                        <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">P R I C E</span>
+                        <div id="rangeBox" class="mt-[28px]">    
+                            <div id="sliderBox">
+                                <input type="range" id="slider0to50" step="5" min="0" max="200" value="100">                           
+                            </div>
+                            <div id="inputRange"> 
+                                <div id="min" class="mt-[3px]">
+                                    <span class="text-[#596780] text-[23px] font-[600] tracking-[-0.02em]"> Max.$100.00</span>
+                                </div>                         
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex justify-center items-center lg:hidden mt-[40px]">
                     <button  class="bg-blue-500 hover:bg-blue-600 text-white  rounded-md w-[110px] h-[40px] ml-[4px] text-[16px]" onclick="filterapply()">Apply</button>
@@ -97,20 +110,19 @@
         <!-- body pick up -->
         <div class="flex w-full flex-col ">
             <div class="px-[16px] sd:px-6 pt-8 lg:pr-[32px] lg:pl-[24px]">
-                <div class="lg:flex lg:w-[100%] lg:justify-between">
-                    <div class="pickup"></div>
-                
-                <div class="flex justify-center mt-[-15px] lg:items-center">
-                    <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px]">
-                        <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.16043 0.835774L5.16043 14.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M1.08277 4.93188L5.16055 0.835218L9.23833 4.93188" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M15.0889 17.1671L15.0889 3.54934" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M19.1665 13.071L15.0888 17.1677L11.011 13.071" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                    </button>
-                </div>        
-                 <div class="dropoff mt-[-13px] lg:mt-[0px]"></div>
+                <div class="lg:flex lg:w-[100%] lg:justify-between lg:gap-[20px]">
+                    <div class="pickup w-[100%]"></div>                
+                    <div class="flex justify-center mt-[-15px] lg:items-center">
+                        <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px] lg:mt-[13px] lg:absolute" onclick="swapValues()">
+                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.16043 0.835774L5.16043 14.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1.08277 4.93188L5.16055 0.835218L9.23833 4.93188" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15.0889 17.1671L15.0889 3.54934" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.1665 13.071L15.0888 17.1677L11.011 13.071" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                        </button>
+                    </div>              
+                    <div class="dropoff mt-[-13px] lg:mt-[0px] w-[100%]"></div>
                 </div>
             </div>
 
@@ -195,6 +207,9 @@
 
 
 
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js" integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

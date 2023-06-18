@@ -138,7 +138,7 @@ function updateFilter(checkbox) {
             }
         }
     }
-    filteredproduct=filterProducts(product["cars"], filter) ;
+    filteredproduct=filterProducts(product, filter) ;
     console.log(filteredproduct)
     productview() ;
 
@@ -152,6 +152,15 @@ function updateFilter(checkbox) {
 // function for pick and drop
 
 function pickupfun(x){
+    let y;
+    if (x=="Pick - Up"){
+        y="Pick-up";
+    }
+    else{
+        y="Drop-Off"
+    }
+
+    console.log(x)
     return `
     <div class="w-full h-[120px] flex bg-white flex-col rounded-[10px] p-[16px] lg:h-[132px] lg:p-[24px]">
             <div class="flex items-center gap-2 mt-[-2px]">
@@ -165,8 +174,8 @@ function pickupfun(x){
                 <div class="flex flex-col w-full mt-[20ox]">
                     <div class="flex flex-col">
                         <span class="font-[700]">Locations</span>
-                        <div class="select-dropdown">
-                            <button href="#" role="button" data-value="" class="select-dropdown__button">
+                        <div class="${y}">
+                            <button href="#" role="button" data-value="" class="${y}__button" id="${y}swap">
                             <span class="text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">Semarang</span>
                             <i class="downarrow">
                                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,11 +183,11 @@ function pickupfun(x){
                                 </svg>                            
                             </i>
                             </button>
-                            <ul class="select-dropdown__list">
-                            <li data-value="1" class="select-dropdown__list-item"><span class="dropdowntext">Bangalore</span></li>
-                            <li data-value="2" class="select-dropdown__list-item"><span class="dropdowntext">Karur</span></li>
-                            <li data-value="3" class="select-dropdown__list-item"><span class="dropdowntext">Salem</span></li>
-                            <li data-value="4" class="select-dropdown__list-item"><span class="dropdowntext">Coimbatore</span></li>
+                            <ul class="${y}__list">
+                            <li data-value="1" class="${y}__list-item"><span class="dropdowntext">Bangalore</span></li>
+                            <li data-value="2" class="${y}__list-item"><span class="dropdowntext">Karur</span></li>
+                            <li data-value="3" class="${y}__list-item"><span class="dropdowntext">Salem</span></li>
+                            <li data-value="4" class="${y}__list-item"><span class="dropdowntext">Coimbatore</span></li>
                             </ul>
                         </div>                        
                     </div>
@@ -323,10 +332,12 @@ function filterProducts(products, filter) {
   
     //price filter
     if (filter.price.length > 0) {
-      filteredProducts = filteredProducts.filter(product =>
-        filter.price.includes(product.price)
-      );
-    }
+        filteredProducts = filteredProducts.filter(product =>
+            // console.log(product.price)
+            parseInt(product.price) < filter.price[0]
+          
+        );
+      }
   
     // Determine number of results per page
     const perPage = filter.perpage[0];
@@ -460,21 +471,107 @@ function showleftside(){
   };
 
 
-//   dropdown 
-document.querySelector('.select-dropdown__button').addEventListener('click', function() {
-    document.querySelector('.select-dropdown__list').classList.toggle('active');
+//   dropdown  Pick up
+
+document.querySelector('.Pick-up__button').addEventListener('click', function() {
+    document.querySelector('.Pick-up__list').classList.toggle('active');
   });
   
-  var listItems = document.querySelectorAll('.select-dropdown__list-item');
+  var listItems = document.querySelectorAll('.Pick-up__list-item');
   listItems.forEach(function(item) {
     item.addEventListener('click', function() {
       var itemValue = this.getAttribute('data-value');
       console.log(itemValue);
       var buttonText = this.innerText;
-      var button = document.querySelector('.select-dropdown__button span');
+      var button = document.querySelector('.Pick-up__button span');
       button.innerText = buttonText;
       button.parentNode.setAttribute('data-value', itemValue);
-      document.querySelector('.select-dropdown__list').classList.remove('active');
+      document.querySelector('.Pick-up__list').classList.remove('active');
     });
   });
   
+
+
+//   price slider
+
+var sliderLeft=document.getElementById("slider0to50");
+var sliderRight=document.getElementById("slider51to100");
+var inputMin=document.getElementById("min");
+
+document.getElementById("slider0to50").oninput = function() {
+    var element = document.getElementById("slider0to50");
+    var value = (element.value - element.min) / (element.max - element.min) * 100;
+    element.style.background = 'linear-gradient(to right, #3563E9 0%, #3563E9 ' + value + '%, #90A3BF ' + value + '%, #90A3BF 100%)';
+  };
+
+///value updation from input to slider
+//function input update to slider
+function sliderLeftInput(){
+   sliderLeft.value=inputMin.value;
+}
+function sliderRightInput(){
+   sliderRight.value=(inputMax.value);
+}
+
+
+console.log(sliderLeftInput)
+
+function inputMinSliderLeft(){//slider update inputs
+   inputMin.innerHTML=`<span class="text-[#596780] text-[23px] font-[600] tracking-[-0.02em]"> Max.$${sliderLeft.value}.00</span>`
+   filter.price[0]=sliderLeft.value;
+   filteredproduct=filterProducts(product, filter) ;
+    console.log(filteredproduct)
+    productview() ;
+
+}
+
+sliderLeft.addEventListener("change",inputMinSliderLeft);
+
+
+// dropdown for drop
+
+document.querySelector('.Drop-Off__button').addEventListener('click', function() {
+    document.querySelector('.Drop-Off__list').classList.toggle('active');
+  });
+  
+  var listItems = document.querySelectorAll('.Drop-Off__list-item');
+  listItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      var itemValue = this.getAttribute('data-value');
+      console.log(itemValue);
+      var buttonText = this.innerText;
+      console.log(buttonText)
+      var button = document.querySelector('.Drop-Off__button span');
+      button.innerText = buttonText;
+      button.parentNode.setAttribute('data-value', itemValue);
+      document.querySelector('.Drop-Off__list').classList.remove('active');
+    });
+  });
+
+
+
+//  swap contentt
+
+function swapValues() {
+    const button1 = document.getElementById("Pick-upswap");
+    const button2 = document.getElementById("Drop-Offswap");
+
+    const temp = button1.textContent;
+    const temp2=button2.textContent;
+
+    var itemValue = button2.getAttribute('data-value');
+    console.log(itemValue);
+    var buttonText = temp2;
+    var button = document.querySelector('.Pick-up__button span');
+    button.innerText = buttonText;
+    button.parentNode.setAttribute('data-value', itemValue);
+    document.querySelector('.Pick-up__list').classList.remove('active');
+
+   
+    console.log(temp)
+    // button1.parentNode.setAttribute('data-value', temp)
+    // Swap the values
+    
+    // button1.textContent = button2.textContent;
+    // button2.textContent = temp;
+  }
