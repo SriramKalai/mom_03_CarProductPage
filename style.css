@@ -765,6 +765,14 @@ video {
   height: fit-content;
 }
 
+.h-\[10px\] {
+  height: 10px;
+}
+
+.h-\[15px\] {
+  height: 15px;
+}
+
 .max-h-\[68px\] {
   max-height: 68px;
 }

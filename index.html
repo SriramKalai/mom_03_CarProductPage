@@ -16,7 +16,7 @@
     <!-- header -->
     <div class="bg-white h-[222px] py-8 px-6 lg:hidden">
         <div class="flex justify-between h-[28px] w-full mb-[35px]">
-            <button><img src="images/menu.svg" src="menu button" class=""></button>
+            <button aria-label="menu"><img src="images/menu.svg" src="menu button" class="" alt="menu"></button>
             <a href="/#"><img src="images/profile.png" alt="profile"></a>
         </div>
         <div>
@@ -43,12 +43,12 @@
             </div>
         </div>
         <div class="flex gap-[20px] ml-[20px]">
-            <button class="profileheadrer">
+            <button class="profileheadrer" aria-label="favourite button">
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.44 0.0999756C12.63 0.0999756 11.01 0.979976 10 2.32998C8.99 0.979976 7.37 0.0999756 5.56 0.0999756C2.49 0.0999756 0 2.59998 0 5.68998C0 6.87998 0.19 7.97998 0.52 8.99998C2.1 14 6.97 16.99 9.38 17.81C9.72 17.93 10.28 17.93 10.62 17.81C13.03 16.99 17.9 14 19.48 8.99998C19.81 7.97998 20 6.87998 20 5.68998C20 2.59998 17.51 0.0999756 14.44 0.0999756Z" fill="#596780"/>
                 </svg>                    
             </button>
-            <button class="profileheadrer">
+            <button class="profileheadrer" aria-label="notification button">
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.34 12.49L14.34 10.83C14.13 10.46 13.94 9.76 13.94 9.35V6.82C13.94 4.47 12.56 2.44 10.57 1.49C10.05 0.57 9.09 0 7.99 0C6.9 0 5.92 0.59 5.4 1.52C3.45 2.49 2.1 4.5 2.1 6.82V9.35C2.1 9.76 1.91 10.46 1.7 10.82L0.690004 12.49C0.290004 13.16 0.200004 13.9 0.450004 14.58C0.690004 15.25 1.26 15.77 2 16.02C3.94 16.68 5.98 17 8.02 17C10.06 17 12.1 16.68 14.04 16.03C14.74 15.8 15.28 15.27 15.54 14.58C15.8 13.89 15.73 13.13 15.34 12.49Z" fill="#596780"/>
                 </svg>
@@ -58,7 +58,7 @@
                     </svg>                        
                 </div>
             </button>
-            <button class="profileheadrer">
+            <button class="profileheadrer" aria-label="setting button">
                 <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18.1 7.22006C16.29 7.22006 15.55 5.94006 16.45 4.37006C16.97 3.46006 16.66 2.30006 15.75 1.78006L14.02 0.790059C13.23 0.320059 12.21 0.600059 11.74 1.39006L11.63 1.58006C10.73 3.15006 9.25 3.15006 8.34 1.58006L8.23 1.39006C7.78 0.600059 6.76 0.320059 5.97 0.790059L4.24 1.78006C3.33 2.30006 3.02 3.47006 3.54 4.38006C4.45 5.94006 3.71 7.22006 1.9 7.22006C0.86 7.22006 0 8.07006 0 9.12006V10.8801C0 11.9201 0.85 12.7801 1.9 12.7801C3.71 12.7801 4.45 14.0601 3.54 15.6301C3.02 16.5401 3.33 17.7001 4.24 18.2201L5.97 19.2101C6.76 19.6801 7.78 19.4001 8.25 18.6101L8.36 18.4201C9.26 16.8501 10.74 16.8501 11.65 18.4201L11.76 18.6101C12.23 19.4001 13.25 19.6801 14.04 19.2101L15.77 18.2201C16.68 17.7001 16.99 16.5301 16.47 15.6301C15.56 14.0601 16.3 12.7801 18.11 12.7801C19.15 12.7801 20.01 11.9301 20.01 10.8801V9.12006C20 8.08006 19.15 7.22006 18.1 7.22006ZM10 13.2501C8.21 13.2501 6.75 11.7901 6.75 10.0001C6.75 8.21006 8.21 6.75006 10 6.75006C11.79 6.75006 13.25 8.21006 13.25 10.0001C13.25 11.7901 11.79 13.2501 10 13.2501Z" fill="#596780"/>
                 </svg>
@@ -89,7 +89,9 @@
                         <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">P R I C E</span>
                         <div id="rangeBox" class="mt-[28px]">    
                             <div id="sliderBox">
-                                <input type="range" id="slider0to50" step="5" min="0" max="200" value="100">                           
+                                <label>
+                                    <input type="range" id="slider0to50" step="5" min="0" max="200" value="100">  
+                                </label>                         
                             </div>
                             <div id="inputRange"> 
                                 <div id="min" class="mt-[3px]">
@@ -100,7 +102,7 @@
                     </div>
                 </div>
                 <div class="flex justify-center items-center lg:hidden mt-[40px]">
-                    <button  class="bg-blue-500 hover:bg-blue-600 text-white  rounded-md w-[110px] h-[40px] ml-[4px] text-[16px]" onclick="filterapply()">Apply</button>
+                    <button  class="bg-blue-500 hover:bg-blue-600 text-white  rounded-md w-[110px] h-[40px] ml-[4px] text-[16px]" aria-label="applybutton" onclick="filterapply()">Apply</button>
                 </div>
             </dialog>
         </div>      
@@ -113,7 +115,7 @@
                 <div class="lg:flex lg:w-[100%] lg:justify-between lg:gap-[20px]">
                     <div class="pickup w-[100%]"></div>                
                     <div class="flex justify-center mt-[-15px] lg:items-center">
-                        <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px] lg:mt-[13px] lg:absolute" onclick="swapValues()">
+                        <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px] lg:mt-[13px] lg:absolute" aria-label="swap" onclick="swapValues()">
                             <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.16043 0.835774L5.16043 14.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M1.08277 4.93188L5.16055 0.835218L9.23833 4.93188" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

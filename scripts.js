@@ -243,13 +243,13 @@ function productview(){
   
     filteredproduct.forEach(product => {
       template += `
-      <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%] lg:mt-[5px] cursor-pointer">
+      <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%] lg:mt-[5px]">
             <div class="justify-between flex">
                 <div class="flex flex-col">
                     <span class="text-[16px] text-[#1A202C] font-[600] tracking-[-0.02em] lg:text-[22px] lg:tracking-[-0.03]">${product.name}</span>
                     <span class="text-[12px] lg:text-[16px] text-[#90A3BF] font-[500] mt-[-3px] tracking-[-0.02em]">${product.type}</span>
                 </div>
-                <button class="flex mt-[3px]" id="myButton" onclick="heartchange(${product.id})">
+                <button class="flex mt-[3px] h-[15px]" id="myButton${product.id}" aria-label="heartbutton" onclick="heartchange(${product.id})">
                     <svg class="lg:w-[24px] lg:h-[26px]" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path id="myPath${product.id}" d="M8.41334 12.8733C8.18668 12.9533 7.81334 12.9533 7.58668 12.8733C5.65334 12.2133 1.33334 9.45998 1.33334 4.79332C1.33334 2.73332 2.99334 1.06665 5.04001 1.06665C6.25334 1.06665 7.32668 1.65332 8.00001 2.55998C8.67334 1.65332 9.75334 1.06665 10.96 1.06665C13.0067 1.06665 14.6667 2.73332 14.6667 4.79332C14.6667 9.45998 10.3467 12.2133 8.41334 12.8733Z" stroke="#90A3BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -259,7 +259,7 @@ function productview(){
                 <div class="flex justify-between items-center  lg:justify-center lg:h-[160px] lg:items-end">
                     <div class="flex [w-221px] justify-center flex-col">
                         <div class="flex justify-center ml-[-20px] lg:ml-[0px]">
-                            <img src="${product.image}" class="min-h-[52px] max-h-[68px] h-fit max-w-[166px] w-fit lg:max-h-[160px] lg:max-w-[252px]">
+                            <img src="${product.image}" class="min-h-[52px] max-h-[68px] h-fit max-w-[166px] w-fit lg:max-h-[160px] lg:max-w-[252px] alt="${product.name}">
                         </div>
                         <div class="imggradient flex w-[221px] h-[44px] mt-[-41px]  lg:w-[264px] lg:h-[66px]">
                         </div>
@@ -409,7 +409,7 @@ function footercontent(){
     
     footerHeaderDetails.innerHTML=`                       
                         <div class="flex flex-col">
-                            <img src="${footerData["brandlogo"]}" class="w-[100px] lg:w-[134px]">
+                            <img src="${footerData["brandlogo"]}" class="w-[100px] lg:w-[134px]" alt="brand logo">
                             <span class="mt-[17px] lg:mt-[20px] w-[65%] lg:w-[53%] text-[#90A3BF] text-[13px] lg:text-[17px] leading-[200%] lg:leading-[150%] tracking-[-0.01em]">${footerData["quotes"]}</span>
                         </div>`
 
