@@ -409,7 +409,7 @@ function footercontent(){
     
     footerHeaderDetails.innerHTML=`                       
                         <div class="flex flex-col">
-                            <img src="${footerData["brandlogo"]}" class="w-[100px] lg:w-[134px]" alt="brand logo">
+                            <img src="${footerData["brandlogo"]}" class="w-[100px] h-[28px] lg:h-[44px] lg:w-[134px]" alt="brand logo">
                             <span class="mt-[17px] lg:mt-[20px] w-[65%] lg:w-[53%] text-[#90A3BF] text-[13px] lg:text-[17px] leading-[200%] lg:leading-[150%] tracking-[-0.01em]">${footerData["quotes"]}</span>
                         </div>`
 
