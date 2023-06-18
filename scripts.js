@@ -259,7 +259,7 @@ function productview(){
                 <div class="flex justify-between items-center  lg:justify-center lg:h-[160px] lg:items-end">
                     <div class="flex [w-221px] justify-center flex-col">
                         <div class="flex justify-center ml-[-20px] lg:ml-[0px]">
-                            <img src="${product.image}" class="min-h-[52px] max-h-[68px] h-fit max-w-[166px] w-fit lg:max-h-[160px] lg:max-w-[252px] alt="${product.name}">
+                            <img src="${product.image}" class="min-h-[52px] max-h-[68px] h-fit max-w-[166px] w-fit lg:max-h-[160px] lg:max-w-[252px]" alt="${product.name}">
                         </div>
                         <div class="imggradient flex w-[221px] h-[44px] mt-[-41px]  lg:w-[264px] lg:h-[66px]">
                         </div>
