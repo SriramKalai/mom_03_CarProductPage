@@ -68,7 +68,7 @@ function displayCarTypes() {
     var carTypesHTML = `<ul>`;
 
     for (var type in carTypes) {
-        carTypesHTML += `<li><label class=" flex pl-[2px]  mt-[32px] items-center"><input class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carType' value='${type}' onchange='updateFilter(this)'>  
+        carTypesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carType' value='${type}' onchange='updateFilter(this)'>  
         <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]">${type}</span>  
         <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carTypes[type]})</span></label></li>`;
     }
@@ -100,11 +100,11 @@ function displayCarCapacities() {
 
     for (var capacity in carCapacities) {
         if (capacity!=8){
-        carCapacitiesHTML += `<li><label class=" flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'>  
+        carCapacitiesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'>  
         <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]">${capacity} Person</span>  
         <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carCapacities[capacity]})</span></label></li>`;}
         else{
-            carCapacitiesHTML += `<li><label class=" flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'> 
+            carCapacitiesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'> 
             <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]"> ${capacity}  or More </span> 
             <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carCapacities[capacity]})</span></label></li>`;
         }
@@ -243,7 +243,7 @@ function productview(){
   
     filteredproduct.forEach(product => {
       template += `
-      <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%] lg:mt-[5px]">
+      <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%] lg:mt-[5px] cursor-pointer">
             <div class="justify-between flex">
                 <div class="flex flex-col">
                     <span class="text-[16px] text-[#1A202C] font-[600] tracking-[-0.02em] lg:text-[22px] lg:tracking-[-0.03]">${product.name}</span>

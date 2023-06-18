@@ -866,6 +866,10 @@ video {
   flex-grow: 1;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .grid-cols-\[207px\2c auto\] {
   grid-template-columns: 207px auto;
 }
