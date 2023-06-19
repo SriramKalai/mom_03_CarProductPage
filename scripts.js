@@ -795,3 +795,7 @@ lastlinedes.innerHTML=`
                        <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
                        <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
                     </div>`
+
+
+
+               
