@@ -819,6 +819,22 @@ video {
   height: fit-content;
 }
 
+.h-\[70px\] {
+  height: 70px;
+}
+
+.h-\[245px\] {
+  height: 245px;
+}
+
+.h-\[350px\] {
+  height: 350px;
+}
+
+.h-\[358px\] {
+  height: 358px;
+}
+
 .max-h-\[68px\] {
   max-height: 68px;
 }
