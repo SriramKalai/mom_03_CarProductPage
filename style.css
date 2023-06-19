@@ -2130,6 +2130,10 @@ input[type="date"] {
     height: 120px;
   }
 
+  .lg\:h-\[auto\] {
+    height: auto;
+  }
+
   .lg\:max-h-\[160px\] {
     max-height: 160px;
   }
