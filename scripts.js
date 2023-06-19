@@ -443,8 +443,10 @@ function filterProducts(products, filter) {
 //   show more cars
 function showmore(){
     filter.perpage[0]+=3;
-    if (filter.perpage[0] == totalcarpresnt){
+    if (filter.perpage[0] >= totalcarpresnt){
+        console.log(filter.perpage[0])
        const showMoreButton =document.querySelector(".showMoreButton")
+       showMoreButton.classList.remove("flex");
        showMoreButton.classList.add("hidden");
 
        const centercontainer=document.querySelector(".centercontainer");
