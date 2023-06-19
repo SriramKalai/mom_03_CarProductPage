@@ -11,6 +11,17 @@ let filter={
     perpage:[7]
 }
 
+// adjust the value of the perpage
+ if (window.matchMedia("(min-width: 1439px)").matches) {
+    filter.perpage [0]=9; 
+}
+
+else {
+    filter.perpage [0]=7;
+}
+
+
+
 // fetching Bannerdeatils
 function bannerdeatils() {
     let uri = "https://poised-bat-bathing-suit.cyclic.app/bannerdetails";
@@ -220,7 +231,7 @@ function pickupfun(x){
                     </svg>
                 <span class="text-[17px] tracking-[-0.02em] text-[#1A202C] font-[600]">${x}</span>
             </div>
-            <div class="flex justify-between mt-[20px]">
+            <div class="flex justify-between mt-[20px] lg:mt-[10px]">
                 <div class="flex flex-col w-full mt-[20ox]">
                     <div class="flex flex-col">
                         <span class="font-[700]">Locations</span>
@@ -242,11 +253,16 @@ function pickupfun(x){
                         </div>                        
                     </div>
                 </div>
-                <div class="w-[1px] h-[48px] bg-[#C3D4E9] ml-[24px]"></div>
+                <div class="w-[1px] h-[48px] bg-[#C3D4E9] ml-[24px] lg:ml-[11px]"></div>
                 <div class="flex flex-col justify-start w-full min-w-[127px] px-[20px]">
                     <span class="font-[700]">Date</span>
+                    <div>
+                        <form action="/action_page.php">
+                            <input type="date" id="pickupdate" name="pickupdate" class="cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
+                        </form>
+                    </div> 
                 </div>
-                <div class="w-[1px] h-[48px] bg-[#C3D4E9] mr-[20px]"></div>
+                <div class="w-[1px] h-[48px] bg-[#C3D4E9] mr-[20px] lg:mr-[15px]"></div>
                 <div class="flex flex-col w-full">
                     <span class="font-[700]">Time</span>
                     <div class="${time}">
@@ -315,7 +331,7 @@ function productview(){
       <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%] lg:mt-[5px]">
             <div class="justify-between flex">
                 <div class="flex flex-col">
-                    <span class="text-[16px] text-[#1A202C] font-[600] tracking-[-0.02em] lg:text-[22px] lg:tracking-[-0.03]">${product.name}</span>
+                    <span class="text-[16px] text-[#1A202C] font-[600] tracking-[-0.02em] lg:text-[22px] lg:tracking-[-0.03]"><a href="/#">${product.name}</a></span>
                     <span class="text-[12px] lg:text-[16px] text-[#90A3BF] font-[500] mt-[-3px] tracking-[-0.02em]">${product.type}</span>
                 </div>
                 <button class="flex mt-[3px] h-[15px]" id="myButton${product.id}" aria-label="heartbutton" onclick="heartchange(${product.id})">
@@ -680,3 +696,59 @@ function swapValues() {
 
 
   
+
+
+
+//   skeleton for the webpage
+
+const productlistskelton =document.querySelector(".productlist")
+let productsk=``
+for (let i = 0; i < filter.perpage[0]; i++) {
+    productsk+=`<div class="flex w-[100%] h-[240px]  lg:w-[100%] lg:h-[388px] bg-[#dddddd] rounded-[15px]"></div>`
+  }
+  productlistskelton.innerHTML=productsk;
+
+
+
+const pickupsk=document.querySelector(".pickup")
+const dropoffsk=document.querySelector(".dropoff")
+let bannersk=`<div class="flex w-[100%] h-[120px]  lg:w-[100%] lg:h-[136px] bg-[#dddddd] rounded-[10px]"></div> `
+pickupsk.innerHTML=bannersk;
+dropoffsk.innerHTML=bannersk;
+
+
+const typesk=document.querySelector("#carTypes")
+let typetemplate=``
+for (let i = 0; i < 6; i++) {
+    typetemplate+=`<div class="flex w-[150px] h-[30px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
+  }
+typesk.innerHTML=typetemplate;
+
+
+
+const capacitysk=document.querySelector("#carCapacities")
+let capacitytemplate=``
+for (let i = 0; i < 4; i++) {
+    capacitytemplate+=`<div class="flex w-[150px] h-[30px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
+  }
+  capacitysk.innerHTML=capacitytemplate;
+
+
+const footerHeadersk=document.querySelector(".footerHeader")
+footerHeadersk.innerHTML=`<div class="flex w-[120px] h-[38px] lg:w-[168px] lg:h-[46px] bg-[#dddddd] rounded-[30px]"></div>
+                    <div class="flex w-[250px] h-[50px] lg:w-[250px] lg:h-[56px] bg-[#dddddd] rounded-[25px] mt-[16px]"></div>`
+    
+                    
+let footersk=``          
+for (let i = 0; i < 5; i++) {
+    footersk+=`<div class="flex w-[110px] h-[25px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[24px]"}"></div>`
+  }
+
+const footerAboutsk=document.querySelector(".footerAbout")
+footerAboutsk.innerHTML=footersk;
+const footerSocialsk=document.querySelector(".footerSocial")
+footerSocialsk.innerHTML=footersk;
+const footercommunitysk=document.querySelector(".footercommunity")
+footercommunitysk.innerHTML=footersk;
+const footerSocialdessk=document.querySelector(".footerSocialdes")
+footerSocialdessk.innerHTML=footersk;

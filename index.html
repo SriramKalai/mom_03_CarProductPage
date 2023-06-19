@@ -13,202 +13,204 @@
     <title>Task 03</title>
 </head>
 <body class="bg-[#f3f1f1]">
+    <div class="flex justify-center">
+        <div class="max-w-[2000px] w-full">
     <!-- header -->
-    <div class="bg-white h-[222px] py-8 px-6 lg:hidden">
-        <div class="flex justify-between h-[28px] w-full mb-[35px]">
-            <button aria-label="menu"><img src="images/menu.svg" src="menu button" class="w-[24px] h-[24px]" alt="menu"></button>
-            <a href="/#"><img src="images/profile.png" alt="profile" class="w-[28px] h-[28px]"></a>
-        </div>
-        <div>
-            <a href="/#"><img src="images/Logo.svg" alt="brand logo" class="w-[100px] h-[24px]"></a>
-        </div>
-        <div class="flex mt-[25px] flex-1 gap-4 justify-between items-center w-full">
-            <div class="mobsearchlabel flex w-[100%] ">
-                <input type="text" placeholder="&nbsp;Search something here" class="mobsearchinput min-w-[200px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[10px] placeholder-[#596780] placeholder text-[14px]  font-medium flex-1 grow">
-            </div>
-            <div>
-                <button class="border-[#C3D4E9] border-[1px] rounded-[10px] p-[10px]" onclick="showleftside()"><img src="images/filter.svg" alt="filter button image" class="w-[34px] h-[24px]"></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- header -->
-    <div class="bg-white pl-[40px] pr-[32px] py-[40px] h-[124px] justify-between hidden lg:flex items-center">
-        <div class="flex md:gap-[40px] lg:gap-[79px] pl-[20px] w-full">
-            <div class="flex">
-                <img src="images/Logo.svg" alt="brand logo" class="w-[166px] h-[44px]">
-            </div>
-            <div class="searchlabel flex w-[100%]">
-                <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Search something here" class="searchinput min-w-[200px] max-w-[492px] w-[100%] border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[70px] placeholder-[#596780] placeholder text-[14px]  font-[500] flex-1 grow">
-            </div>
-        </div>
-        <div class="flex gap-[20px] ml-[20px]">
-            <button class="profileheadrer" aria-label="favourite button">
-                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.44 0.0999756C12.63 0.0999756 11.01 0.979976 10 2.32998C8.99 0.979976 7.37 0.0999756 5.56 0.0999756C2.49 0.0999756 0 2.59998 0 5.68998C0 6.87998 0.19 7.97998 0.52 8.99998C2.1 14 6.97 16.99 9.38 17.81C9.72 17.93 10.28 17.93 10.62 17.81C13.03 16.99 17.9 14 19.48 8.99998C19.81 7.97998 20 6.87998 20 5.68998C20 2.59998 17.51 0.0999756 14.44 0.0999756Z" fill="#596780"/>
-                </svg>                    
-            </button>
-            <button class="profileheadrer" aria-label="notification button">
-                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.34 12.49L14.34 10.83C14.13 10.46 13.94 9.76 13.94 9.35V6.82C13.94 4.47 12.56 2.44 10.57 1.49C10.05 0.57 9.09 0 7.99 0C6.9 0 5.92 0.59 5.4 1.52C3.45 2.49 2.1 4.5 2.1 6.82V9.35C2.1 9.76 1.91 10.46 1.7 10.82L0.690004 12.49C0.290004 13.16 0.200004 13.9 0.450004 14.58C0.690004 15.25 1.26 15.77 2 16.02C3.94 16.68 5.98 17 8.02 17C10.06 17 12.1 16.68 14.04 16.03C14.74 15.8 15.28 15.27 15.54 14.58C15.8 13.89 15.73 13.13 15.34 12.49Z" fill="#596780"/>
-                </svg>
-                <div class="reddot">
-                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="5.5" cy="5.5" r="5.5" fill="#FF4423"/>
-                    </svg>                        
+            <div class="bg-white h-[222px] py-8 px-6 lg:hidden">
+                <div class="flex justify-between h-[28px] w-full mb-[35px]">
+                    <button aria-label="menu"><img src="images/menu.svg" src="menu button" class="w-[24px] h-[24px]" alt="menu"></button>
+                    <a href="/#"><img src="images/profile.png" alt="profile" class="w-[28px] h-[28px]"></a>
                 </div>
-            </button>
-            <button class="profileheadrer" aria-label="setting button">
-                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.1 7.22006C16.29 7.22006 15.55 5.94006 16.45 4.37006C16.97 3.46006 16.66 2.30006 15.75 1.78006L14.02 0.790059C13.23 0.320059 12.21 0.600059 11.74 1.39006L11.63 1.58006C10.73 3.15006 9.25 3.15006 8.34 1.58006L8.23 1.39006C7.78 0.600059 6.76 0.320059 5.97 0.790059L4.24 1.78006C3.33 2.30006 3.02 3.47006 3.54 4.38006C4.45 5.94006 3.71 7.22006 1.9 7.22006C0.86 7.22006 0 8.07006 0 9.12006V10.8801C0 11.9201 0.85 12.7801 1.9 12.7801C3.71 12.7801 4.45 14.0601 3.54 15.6301C3.02 16.5401 3.33 17.7001 4.24 18.2201L5.97 19.2101C6.76 19.6801 7.78 19.4001 8.25 18.6101L8.36 18.4201C9.26 16.8501 10.74 16.8501 11.65 18.4201L11.76 18.6101C12.23 19.4001 13.25 19.6801 14.04 19.2101L15.77 18.2201C16.68 17.7001 16.99 16.5301 16.47 15.6301C15.56 14.0601 16.3 12.7801 18.11 12.7801C19.15 12.7801 20.01 11.9301 20.01 10.8801V9.12006C20 8.08006 19.15 7.22006 18.1 7.22006ZM10 13.2501C8.21 13.2501 6.75 11.7901 6.75 10.0001C6.75 8.21006 8.21 6.75006 10 6.75006C11.79 6.75006 13.25 8.21006 13.25 10.0001C13.25 11.7901 11.79 13.2501 10 13.2501Z" fill="#596780"/>
-                </svg>
-            </button>
-            <button class="w-[44px] h-[44px]">
-                <img src="images/profile.svg" class="w-[44px] h-[44px]" alt="profile">
-            </button>
-        </div>
-    </div>
-
-    <div class="lg:flex lg:gap-[6px]">
-        <!-- left side container -->
-        <div>
-            <dialog class="modal w-[90%]  bg-white lg:block  ld:max-w-[360px] lg:w-full lg:p-0 lg:m-[0px]" id="modal">
-                <div class="flex justify-end lg:hidden">
-                    <button class="closebutton w-[20px] rounded-full p-[2px]" onclick="filterapply()">&#xf00d;</button>
+                <div>
+                    <a href="/#"><img src="images/Logo.svg" alt="brand logo" class="w-[100px] h-[24px]"></a>
                 </div>
-                <div class=" leftside bg-white h-fit w-[100%] lg:h-[1600px] lg:w-[260px] ld:w-[360px] justify-start  hidden lg:flex flex-col pt-[20px] lg:pt-[32px] pl-[32px]">
-                    <div class="flex flex-col">
-                        <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">T Y P E</span>
-                        <div id="carTypes"></div>
+                <div class="flex mt-[25px] flex-1 gap-4 justify-between items-center w-full">
+                    <div class="mobsearchlabel flex w-[100%] ">
+                        <input type="text" placeholder="&nbsp;Search something here" class="mobsearchinput min-w-[200px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[10px] placeholder-[#596780] placeholder text-[14px]  font-medium flex-1 grow">
                     </div>
-                    <div class="flex flex-col mt-[52px]">
-                        <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">C A P A C I T Y</span>
-                        <div id="carCapacities"></div>
+                    <div>
+                        <button class="border-[#C3D4E9] border-[1px] rounded-[10px] p-[10px]" onclick="showleftside()"><img src="images/filter.svg" alt="filter button image" class="w-[34px] h-[24px]"></button>
                     </div>
-                    <div class="flex flex-col mt-[52px] pr-[20px]">
-                        <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">P R I C E</span>
-                        <div id="rangeBox" class="mt-[28px]">    
-                            <div id="sliderBox">
-                                <input type="range" id="slider0to50" step="5" min="0" max="200" value="100" aria-label="price slider">  
-                                                         
+                </div>
+            </div>
+            <div class="bg-white pl-[40px] pr-[32px] py-[40px] h-[124px] justify-between hidden lg:flex items-center">
+                <div class="flex md:gap-[40px] lg:gap-[79px] pl-[20px] w-full">
+                    <div class="flex">
+                        <img src="images/Logo.svg" alt="brand logo" class="w-[166px] h-[44px]">
+                    </div>
+                    <div class="searchlabel flex w-[100%]">
+                        <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Search something here" class="searchinput min-w-[200px] max-w-[492px] w-[100%] border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[70px] placeholder-[#596780] placeholder text-[14px]  font-[500] flex-1 grow">
+                    </div>
+                </div>
+                <div class="flex gap-[20px] ml-[20px]">
+                    <button class="profileheadrer" aria-label="favourite button">
+                        <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.44 0.0999756C12.63 0.0999756 11.01 0.979976 10 2.32998C8.99 0.979976 7.37 0.0999756 5.56 0.0999756C2.49 0.0999756 0 2.59998 0 5.68998C0 6.87998 0.19 7.97998 0.52 8.99998C2.1 14 6.97 16.99 9.38 17.81C9.72 17.93 10.28 17.93 10.62 17.81C13.03 16.99 17.9 14 19.48 8.99998C19.81 7.97998 20 6.87998 20 5.68998C20 2.59998 17.51 0.0999756 14.44 0.0999756Z" fill="#596780"/>
+                        </svg>                    
+                    </button>
+                    <button class="profileheadrer" aria-label="notification button">
+                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.34 12.49L14.34 10.83C14.13 10.46 13.94 9.76 13.94 9.35V6.82C13.94 4.47 12.56 2.44 10.57 1.49C10.05 0.57 9.09 0 7.99 0C6.9 0 5.92 0.59 5.4 1.52C3.45 2.49 2.1 4.5 2.1 6.82V9.35C2.1 9.76 1.91 10.46 1.7 10.82L0.690004 12.49C0.290004 13.16 0.200004 13.9 0.450004 14.58C0.690004 15.25 1.26 15.77 2 16.02C3.94 16.68 5.98 17 8.02 17C10.06 17 12.1 16.68 14.04 16.03C14.74 15.8 15.28 15.27 15.54 14.58C15.8 13.89 15.73 13.13 15.34 12.49Z" fill="#596780"/>
+                        </svg>
+                        <div class="reddot">
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="5.5" cy="5.5" r="5.5" fill="#FF4423"/>
+                            </svg>                        
+                        </div>
+                    </button>
+                    <button class="profileheadrer" aria-label="setting button">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.1 7.22006C16.29 7.22006 15.55 5.94006 16.45 4.37006C16.97 3.46006 16.66 2.30006 15.75 1.78006L14.02 0.790059C13.23 0.320059 12.21 0.600059 11.74 1.39006L11.63 1.58006C10.73 3.15006 9.25 3.15006 8.34 1.58006L8.23 1.39006C7.78 0.600059 6.76 0.320059 5.97 0.790059L4.24 1.78006C3.33 2.30006 3.02 3.47006 3.54 4.38006C4.45 5.94006 3.71 7.22006 1.9 7.22006C0.86 7.22006 0 8.07006 0 9.12006V10.8801C0 11.9201 0.85 12.7801 1.9 12.7801C3.71 12.7801 4.45 14.0601 3.54 15.6301C3.02 16.5401 3.33 17.7001 4.24 18.2201L5.97 19.2101C6.76 19.6801 7.78 19.4001 8.25 18.6101L8.36 18.4201C9.26 16.8501 10.74 16.8501 11.65 18.4201L11.76 18.6101C12.23 19.4001 13.25 19.6801 14.04 19.2101L15.77 18.2201C16.68 17.7001 16.99 16.5301 16.47 15.6301C15.56 14.0601 16.3 12.7801 18.11 12.7801C19.15 12.7801 20.01 11.9301 20.01 10.8801V9.12006C20 8.08006 19.15 7.22006 18.1 7.22006ZM10 13.2501C8.21 13.2501 6.75 11.7901 6.75 10.0001C6.75 8.21006 8.21 6.75006 10 6.75006C11.79 6.75006 13.25 8.21006 13.25 10.0001C13.25 11.7901 11.79 13.2501 10 13.2501Z" fill="#596780"/>
+                        </svg>
+                    </button>
+                    <button class="w-[44px] h-[44px]">
+                        <img src="images/profile.svg" class="w-[44px] h-[44px]" alt="profile">
+                    </button>
+                </div>
+            </div>
+
+
+
+
+            <div class="lg:flex lg:gap-[6px]">
+                <!-- left side container -->
+                <div>
+                    <dialog class="modal w-[90%]  bg-white lg:block lg:h-[100%] ld:max-w-[360px] lg:w-full lg:p-0 lg:m-[0px]" id="modal">
+                        <div class="flex justify-end lg:hidden">
+                            <button class="closebutton w-[20px] rounded-full p-[2px]" onclick="filterapply()">&#xf00d;</button>
+                        </div>
+                        <div class=" leftside bg-white h-fit w-[100%] lg:h-[100%] lg:w-[260px] ld:w-[360px] justify-start  hidden lg:flex flex-col pt-[20px] lg:pt-[32px] pl-[32px]">
+                            <div class="flex flex-col">
+                                <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">T Y P E</span>
+                                <div id="carTypes"></div>
                             </div>
-                            <div id="inputRange"> 
-                                <div id="min" class="mt-[3px]">
-                                    <span class="text-[#596780] text-[23px] font-[600] tracking-[-0.02em]"> Max.$100.00</span>
-                                </div>                         
+                            <div class="flex flex-col mt-[52px]">
+                                <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">C A P A C I T Y</span>
+                                <div id="carCapacities"></div>
+                            </div>
+                            <div class="flex flex-col mt-[52px] pr-[20px]">
+                                <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">P R I C E</span>
+                                <div id="rangeBox" class="mt-[28px]">    
+                                    <div id="sliderBox">
+                                        <input type="range" id="slider0to50" step="5" min="0" max="200" value="100" aria-label="price slider">  
+                                                                
+                                    </div>
+                                    <div id="inputRange"> 
+                                        <div id="min" class="mt-[3px]">
+                                            <span class="text-[#596780] text-[23px] font-[600] tracking-[-0.02em]"> Max.$100.00</span>
+                                        </div>                         
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="flex justify-center items-center lg:hidden mt-[40px]">
+                            <button  class="bg-blue-500 hover:bg-blue-600 text-white  rounded-md w-[110px] h-[40px] ml-[4px] text-[16px]" aria-label="applybutton" onclick="filterapply()">Apply</button>
+                        </div>
+                    </dialog>
+                </div>      
+                
+
+
+                <!-- right side container -->
+
+
+
+                <!-- body pick up -->
+                <div class="flex w-full flex-col ">
+                    <div class="px-[16px] sd:px-6 pt-8 lg:pr-[32px] lg:pl-[24px]">
+                        <div class="lg:flex lg:w-[100%] lg:justify-between lg:gap-[20px]">
+                            <div class="pickup w-[100%]"></div>                
+                            <div class="flex justify-center mt-[-15px] lg:items-center">
+                                <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px] lg:mt-[13px] lg:absolute" aria-label="swap" onclick="swapValues()">
+                                    <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.16043 0.835774L5.16043 14.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M1.08277 4.93188L5.16055 0.835218L9.23833 4.93188" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M15.0889 17.1671L15.0889 3.54934" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M19.1665 13.071L15.0888 17.1677L11.011 13.071" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                </button>
+                            </div>              
+                            <div class="dropoff mt-[-13px] lg:mt-[0px] w-[100%]"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex justify-center items-center lg:hidden mt-[40px]">
-                    <button  class="bg-blue-500 hover:bg-blue-600 text-white  rounded-md w-[110px] h-[40px] ml-[4px] text-[16px]" aria-label="applybutton" onclick="filterapply()">Apply</button>
-                </div>
-            </dialog>
-        </div>      
+
+                    <!-- product container -->
+                    <div class="px-[16px] sd:px-[24px] mt-[32px] lg:mt-[30px]">                        
+                        <div class="productlist grid-container">                            
+                        </div>            
+                    </div>
+                    <div class="flex mt-[48px] lg:mt-[64px]  justify-center items-center relative lg:pr-[5px] md:mb-[40px]">
+                        <button class="bg-[#3563E9] w-[120px] h-[36px] lg:w-[158px] lg:h-[46px] text-[#FFFFFF] font-[600] tracking-[-0.02em] rounded-[4px] text-[12px] lg:text-[16px] md:mb-[24px]" onclick="showmore()">Show More Car</button>
+                        <span class="totalitems text-[14px] lg:text-[16px] text-[#90A3BF] font[500] absolute right-[20px] lg:right-[40px]"></span>
+                    </div>
+                </div>     
+            </div>
         
-        <!-- right side container -->
-        <!-- body pick up -->
-        <div class="flex w-full flex-col ">
-            <div class="px-[16px] sd:px-6 pt-8 lg:pr-[32px] lg:pl-[24px]">
-                <div class="lg:flex lg:w-[100%] lg:justify-between lg:gap-[20px]">
-                    <div class="pickup w-[100%]"></div>                
-                    <div class="flex justify-center mt-[-15px] lg:items-center">
-                        <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px] lg:mt-[13px] lg:absolute" aria-label="swap" onclick="swapValues()">
-                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.16043 0.835774L5.16043 14.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M1.08277 4.93188L5.16055 0.835218L9.23833 4.93188" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M15.0889 17.1671L15.0889 3.54934" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M19.1665 13.071L15.0888 17.1677L11.011 13.071" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                        </button>
-                    </div>              
-                    <div class="dropoff mt-[-13px] lg:mt-[0px] w-[100%]"></div>
+
+        
+
+
+            <!-- footer -->
+            <div class="mt-[48px] md:bg-white md:mt-[0px] md:px-[60px] md:pt-[80px] md:pb-[20px]">
+                <div class="flex">
+                    <div class="flex flex-col md:flex-row pt-[5px] px-[24px] md:px-[0px]  md:justify-between md:w-[100%] md:pt-[11px] md:mb-[46px]">
+                        <div class="footerHeader"></div>                            
+                        <div class="grid grid-cols-[207px,auto] lg:grid-cols-[212px,213px,152px] md:grid-cols-[160px,160px,152px] md:mt-[-10px]">
+                            <div class="flex flex-col mt-[48px] md:mt-[0px]">
+                                <ul class="footerAbout">                    
+                                </ul>
+                            </div> 
+                            <div class="flex flex-col mt-[48px] md:hidden">
+                                <ul class="footerSocial">                    
+                                </ul>
+                            </div>                      
+                            <div class="flex flex-col mt-[48px] md:mt-[0px]">
+                                <ul class="footercommunity">                    
+                                </ul>
+                            </div>
+                            <div class="flex-col mt-[48px] hidden md:flex md:mt-[0px]">
+                                <ul class="footerSocialdes">                    
+                                </ul>
+                            </div>  
+                        </div>                 
+                    </div>
+                </div>
+                <div class="lastlinedes border-t-[1px] border-[#131313] border-opacity-[0.1] hidden md:flex justify-between items-center h-[100px]">          
                 </div>
             </div>
 
-            <!-- product container -->
-            <div class="px-[16px] sd:px-[24px] mt-[32px] lg:mt-[30px]">
-                <div class="productlist grid-container"></div>            
+            <!-- last line -->
+            <div class="mt-[48px] px-[24px] flex md:justify-center mb-[24px] md:hidden">
+                <div class="lastline flex flex-col w-full">           
+                </div>
             </div>
 
-            <div class="flex mt-[48px] lg:mt-[70px]  justify-center items-center relative lg:pr-[5px] md:mb-[40px]">
-                <button class="bg-[#3563E9] w-[120px] h-[36px] lg:w-[158px] lg:h-[46px] text-[#FFFFFF] font-[600] tracking-[-0.02em] rounded-[4px] text-[12px] lg:text-[16px]" onclick="showmore()">Show More Car</button>
-                <span class="totalitems text-[14px] lg:text-[16px] text-[#90A3BF] font[500] absolute right-[20px] lg:right-[40px]"></span>
-            </div>
+        
+            <!-- <div class="select-dropdown">
+                <button href="#" role="button" data-value="" class="select-dropdown__button">
+                <span>Semarang</span>
+                <i class="zmdi zmdi-chevron-down"></i>
+                </button>
+                <ul class="select-dropdown__list">
+                <li data-value="1" class="select-dropdown__list-item">Bangalore</li>
+                <li data-value="2" class="select-dropdown__list-item">Karur</li>
+                <li data-value="3" class="select-dropdown__list-item">Salem</li>
+                <li data-value="4" class="select-dropdown__list-item">Coimbatore</li>
+                </ul>
+            </div> -->
 
+            <!-- <h1>Car Types</h1>
+            <div id="carTypes"></div>
+            <br>
+            <h2>Filter:</h2>
+            <div id="filterOptions"></div>
 
-        </div>       
-
-    </div>
- 
-
-   
-
-
-    <!-- footer -->
-    <div class="mt-[48px] md:bg-white md:mt-[0px] md:px-[60px] md:pt-[80px] md:pb-[20px]">
-        <div class="flex">
-            <div class="flex flex-col md:flex-row pt-[5px] px-[24px] md:px-[0px]  md:justify-between md:w-[100%] md:pt-[11px] md:mb-[46px]">
-                <div class="footerHeader"></div>                            
-                <div class="grid grid-cols-[207px,auto] lg:grid-cols-[212px,213px,152px] md:grid-cols-[160px,160px,152px] md:mt-[-10px]">
-                    <div class="flex flex-col mt-[48px] md:mt-[0px]">
-                        <ul class="footerAbout">                    
-                        </ul>
-                    </div> 
-                    <div class="flex flex-col mt-[48px] md:hidden">
-                        <ul class="footerSocial">                    
-                        </ul>
-                    </div>                      
-                    <div class="flex flex-col mt-[48px] md:mt-[0px]">
-                        <ul class="footercommunity">                    
-                        </ul>
-                    </div>
-                    <div class="flex-col mt-[48px] hidden md:flex md:mt-[0px]">
-                        <ul class="footerSocialdes">                    
-                        </ul>
-                    </div>  
-                </div>                 
-            </div>
-        </div>
-        <div class="lastlinedes border-t-[1px] border-[#131313] border-opacity-[0.1] hidden md:flex justify-between items-center h-[100px]">          
+            <h1>Car Types</h1>
+            <div id="carCapacities"></div>
+            <br>
+            <h2>Filter:</h2> -->
         </div>
     </div>
-
-    <!-- last line -->
-    <div class="mt-[48px] px-[24px] flex md:justify-center mb-[24px] md:hidden">
-        <div class="lastline flex flex-col w-full">           
-        </div>
-    </div>
-
-   
-    <!-- <div class="select-dropdown">
-        <button href="#" role="button" data-value="" class="select-dropdown__button">
-          <span>Semarang</span>
-          <i class="zmdi zmdi-chevron-down"></i>
-        </button>
-        <ul class="select-dropdown__list">
-          <li data-value="1" class="select-dropdown__list-item">Bangalore</li>
-          <li data-value="2" class="select-dropdown__list-item">Karur</li>
-          <li data-value="3" class="select-dropdown__list-item">Salem</li>
-          <li data-value="4" class="select-dropdown__list-item">Coimbatore</li>
-        </ul>
-    </div> -->
-
-    <!-- <h1>Car Types</h1>
-    <div id="carTypes"></div>
-    <br>
-    <h2>Filter:</h2>
-    <div id="filterOptions"></div>
-
-    <h1>Car Types</h1>
-    <div id="carCapacities"></div>
-    <br>
-    <h2>Filter:</h2> -->
-
-
-
-    
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js" integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="scripts.js"></script>
 </body>

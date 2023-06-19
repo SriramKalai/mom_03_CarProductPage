@@ -650,8 +650,16 @@ video {
   margin-top: -7px;
 }
 
+.mt-\[0px\] {
+  margin-top: 0px;
+}
+
 .mt-\[14px\] {
   margin-top: 14px;
+}
+
+.mt-\[16px\] {
+  margin-top: 16px;
 }
 
 .mt-\[17px\] {
@@ -666,8 +674,16 @@ video {
   margin-top: 20px;
 }
 
+.mt-\[24px\] {
+  margin-top: 24px;
+}
+
 .mt-\[25px\] {
   margin-top: 25px;
+}
+
+.mt-\[27px\] {
+  margin-top: 27px;
 }
 
 .mt-\[28px\] {
@@ -754,12 +770,24 @@ video {
   height: 24px;
 }
 
+.h-\[25px\] {
+  height: 25px;
+}
+
 .h-\[28px\] {
   height: 28px;
 }
 
+.h-\[30px\] {
+  height: 30px;
+}
+
 .h-\[36px\] {
   height: 36px;
+}
+
+.h-\[38px\] {
+  height: 38px;
 }
 
 .h-\[40px\] {
@@ -772,6 +800,10 @@ video {
 
 .h-\[48px\] {
   height: 48px;
+}
+
+.h-\[50px\] {
+  height: 50px;
 }
 
 .h-\[60px\] {
@@ -811,6 +843,10 @@ video {
   width: 14px;
 }
 
+.w-\[150px\] {
+  width: 150px;
+}
+
 .w-\[166px\] {
   width: 166px;
 }
@@ -829,6 +865,10 @@ video {
 
 .w-\[24px\] {
   width: 24px;
+}
+
+.w-\[250px\] {
+  width: 250px;
 }
 
 .w-\[28px\] {
@@ -882,6 +922,10 @@ video {
 
 .max-w-\[492px\] {
   max-width: 492px;
+}
+
+.max-w-\[2000px\] {
+  max-width: 2000px;
 }
 
 .flex-1 {
@@ -956,6 +1000,18 @@ video {
   border-radius: 10px;
 }
 
+.rounded-\[15px\] {
+  border-radius: 15px;
+}
+
+.rounded-\[25px\] {
+  border-radius: 25px;
+}
+
+.rounded-\[30px\] {
+  border-radius: 30px;
+}
+
 .rounded-\[4px\] {
   border-radius: 4px;
 }
@@ -1006,6 +1062,11 @@ video {
 .bg-\[\#C3D4E9\] {
   --tw-bg-opacity: 1;
   background-color: rgb(195 212 233 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#dddddd\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(221 221 221 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#f3f1f1\] {
@@ -1262,7 +1323,7 @@ video {
 
 @media (min-width: 1024px) {
   .grid-container {
-    row-gap: 24px;
+    row-gap: 27px;
     -moz-column-gap: 22px;
          column-gap: 22px;
   }
@@ -1594,7 +1655,7 @@ video {
 
 .pickupTime__button .downarrow {
   position: absolute;
-  right: -4px;
+  right: 1px;
   top: 10px;
 }
 
@@ -1725,6 +1786,32 @@ video {
   /* Hide the scrollbar */
 }
 
+/* date drop down */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* display: none; */
+  /* opacity: 0; */
+  /* content: url("images/down_arrow.svg");  */
+  cursor: pointer;
+}
+
+/* Add custom down arrow */
+
+input[type="date"]::after {
+  /* content: url("images/down_arrow.svg");    */
+  position: absolute;
+  /* transform: translatex(100px); */
+}
+
+/* Remove border */
+
+input[type="date"] {
+  border: none;
+  outline: none;
+  /* cursor: pointer; */
+  /* width: -webkit-fill-available; */
+}
+
 .hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
@@ -1743,6 +1830,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:mb-\[24px\] {
+    margin-bottom: 24px;
+  }
+
   .md\:mb-\[40px\] {
     margin-bottom: 40px;
   }
@@ -1773,11 +1864,6 @@ video {
 
   .md\:w-\[100\%\] {
     width: 100%;
-  }
-
-  .md\:w-max {
-    width: -moz-max-content;
-    width: max-content;
   }
 
   .md\:grid-cols-\[160px\2c 160px\2c 152px\] {
@@ -1853,8 +1939,16 @@ video {
     margin-left: 0px;
   }
 
+  .lg\:ml-\[11px\] {
+    margin-left: 11px;
+  }
+
   .lg\:mr-\[-1px\] {
     margin-right: -1px;
+  }
+
+  .lg\:mr-\[15px\] {
+    margin-right: 15px;
   }
 
   .lg\:mt-\[0px\] {
@@ -1885,8 +1979,8 @@ video {
     margin-top: 5px;
   }
 
-  .lg\:mt-\[70px\] {
-    margin-top: 70px;
+  .lg\:mt-\[64px\] {
+    margin-top: 64px;
   }
 
   .lg\:block {
@@ -1901,12 +1995,16 @@ video {
     display: none;
   }
 
+  .lg\:h-\[100\%\] {
+    height: 100%;
+  }
+
   .lg\:h-\[132px\] {
     height: 132px;
   }
 
-  .lg\:h-\[1600px\] {
-    height: 1600px;
+  .lg\:h-\[136px\] {
+    height: 136px;
   }
 
   .lg\:h-\[160px\] {
@@ -1937,6 +2035,10 @@ video {
     height: 46px;
   }
 
+  .lg\:h-\[56px\] {
+    height: 56px;
+  }
+
   .lg\:h-\[66px\] {
     height: 66px;
   }
@@ -1961,8 +2063,16 @@ video {
     width: 158px;
   }
 
+  .lg\:w-\[168px\] {
+    width: 168px;
+  }
+
   .lg\:w-\[24px\] {
     width: 24px;
+  }
+
+  .lg\:w-\[250px\] {
+    width: 250px;
   }
 
   .lg\:w-\[260px\] {
@@ -2139,6 +2249,5 @@ video {
     display: none;
   }
 }
-
 
   
