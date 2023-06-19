@@ -265,7 +265,7 @@ function pickupfun(x){
                     <span class="font-[700]">Date</span>
                     <div class="">
                         <form action="/action_page.php">
-                            <input aria-label="date" type="date" id="${y}pickupdate" name="pickupdate" class="${y}_date cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
+                            <input aria-label="date" type="date" id="${y}-date" name="pickupdate" class="${y}_date cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400] clickable-date" placeholder="dd-mm-yyyy">
                         </form>
                     </div> 
                 </div>
@@ -603,6 +603,8 @@ function locatinpickup(){
         document.querySelector('.pickupTime__list').classList.remove('active');
         });
     });
+
+   
 }
     
 
