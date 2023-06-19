@@ -704,7 +704,7 @@ function swapValues() {
 const productlistskelton =document.querySelector(".productlist")
 let productsk=``
 for (let i = 0; i < filter.perpage[0]; i++) {
-    productsk+=`<div class="flex w-[100%] h-[240px]  lg:w-[100%] lg:h-[388px] bg-[#dddddd] rounded-[15px]"></div>`
+    productsk+=`<div class="flex w-[100%] h-[250px]  lg:w-[100%] lg:h-[388px] bg-[#dddddd] rounded-[15px]"></div>`
   }
   productlistskelton.innerHTML=productsk;
 
@@ -720,7 +720,7 @@ dropoffsk.innerHTML=bannersk;
 const typesk=document.querySelector("#carTypes")
 let typetemplate=``
 for (let i = 0; i < 6; i++) {
-    typetemplate+=`<div class="flex w-[150px] h-[30px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
+    typetemplate+=`<div class="flex w-[150px] h-[28px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
   }
 typesk.innerHTML=typetemplate;
 
@@ -729,7 +729,7 @@ typesk.innerHTML=typetemplate;
 const capacitysk=document.querySelector("#carCapacities")
 let capacitytemplate=``
 for (let i = 0; i < 4; i++) {
-    capacitytemplate+=`<div class="flex w-[150px] h-[30px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
+    capacitytemplate+=`<div class="flex w-[150px] h-[28px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
   }
   capacitysk.innerHTML=capacitytemplate;
 
@@ -741,7 +741,7 @@ footerHeadersk.innerHTML=`<div class="flex w-[120px] h-[38px] lg:w-[168px] lg:h-
                     
 let footersk=``          
 for (let i = 0; i < 5; i++) {
-    footersk+=`<div class="flex w-[110px] h-[25px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[24px]"}"></div>`
+    footersk+=`<div class="flex w-[110px] h-[24px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[24px]"}"></div>`
   }
 
 const footerAboutsk=document.querySelector(".footerAbout")
@@ -752,3 +752,15 @@ const footercommunitysk=document.querySelector(".footercommunity")
 footercommunitysk.innerHTML=footersk;
 const footerSocialdessk=document.querySelector(".footerSocialdes")
 footerSocialdessk.innerHTML=footersk;
+
+
+const lastlinedes=document.querySelector(".lastlinedes");
+
+
+lastlinedes.innerHTML=`
+                    <div class="flex w-[250px] h-[30px]  bg-[#dddddd] rounded-[25px]">
+                    </div>
+                    <div class="flex gap-[70px]">
+                       <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
+                       <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
+                    </div>`
