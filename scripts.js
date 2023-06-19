@@ -3,6 +3,7 @@ let product;
 let filteredproduct;
 const productCard=document.querySelector(".productlist")
 let locationDetails;
+let cityplaceholder;
 
 let filter={
     type:[],
@@ -20,6 +21,13 @@ else {
     filter.perpage [0]=7;
 }
 
+
+// banner place holder value 
+if ((window.matchMedia("(min-width: 767px) and (max-width: 1024px)").matches) || (window.innerWidth > 1367)) {
+    cityplaceholder = "Select your city";
+} else {
+    cityplaceholder = "Semarang";
+}
 
 
 // fetching Bannerdeatils
@@ -185,7 +193,7 @@ function gendropdown(info){
     let data=locationDetails[`${info}`]
     let template=``
     data.forEach((value)=>{
-        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[20px]">${value}</span></li>`
+        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[16px]">${value}</span></li>`
     })
     return template
 }
@@ -196,7 +204,7 @@ function gentimedetails(info){
     let template=``
     console.log(data);
     data.forEach((value)=>{
-        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[20px]">${value}</span></li>`
+        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[16px]">${value}</span></li>`
     })
     return template
 }
@@ -238,8 +246,7 @@ function pickupfun(x){
                         <div class="${y}">
                             <button href="#" role="button" data-value="" class="${y}__button" id="${y}swap">
                             <span class="text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
-                                <p class="md:hidden lg:block cd:hidden">Semarang</p>
-                                <p class="hidden md:block lg:hidden cd:block">Select your city</p>
+                                <p>${cityplaceholder}</p>                              
                             </span>
                             <i class="downarrow cd:mr-[14px]">
                                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -673,16 +680,27 @@ function swapValues() {
     const button1 = document.getElementById("Pick-upswap");
     const button2 = document.getElementById("Drop-Offswap");
 
-    const temp = button1.textContent;
-    const temp2=button2.textContent;
+    const temp = button1.textContent.trim();
+    const temp2=button2.textContent.trim();
+    var itemValue = button1.getAttribute('data-value');
+    console.log("button one",temp);
 
     var itemValue = button2.getAttribute('data-value');
-    console.log(itemValue);
+    console.log("button two",temp2);
+
+
     var buttonText = temp2;
     var button = document.querySelector('.Pick-up__button span');
     button.innerText = buttonText;
     button.parentNode.setAttribute('data-value', itemValue);
     document.querySelector('.Pick-up__list').classList.remove('active');
+
+
+    var buttonText = temp;
+    var button = document.querySelector('.Drop-Off__button span');
+    button.innerText = buttonText;
+    button.parentNode.setAttribute('data-value', itemValue);
+    document.querySelector('.Drop-Off__list').classList.remove('active');
 
    
     console.log(temp)
