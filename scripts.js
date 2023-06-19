@@ -772,7 +772,7 @@ footerHeadersk.innerHTML=`<div class="flex w-[120px] h-[38px] lg:w-[168px] lg:h-
                     
 let footersk=``          
 for (let i = 0; i < 5; i++) {
-    footersk+=`<div class="flex w-[110px] h-[24px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[24px]"}"></div>`
+    footersk+=`<div class="flex w-[110px] h-[22px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[21px]"}"></div>`
   }
 
 const footerAboutsk=document.querySelector(".footerAbout")
@@ -795,7 +795,13 @@ lastlinedes.innerHTML=`
                        <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
                        <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
                     </div>`
+const lastline=document.querySelector(".lastline")
 
+lastline.innerHTML=` <div class="flex justify-between" >
+                        <div class="flex w-[100px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
+                        <div class="flex w-[100px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
+                    </div>
+                    <div class="flex w-[200px] h-[30px]  bg-[#dddddd] rounded-[25px] mt-[30px]"></div>`
 
 
                
