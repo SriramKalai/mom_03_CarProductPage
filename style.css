@@ -722,6 +722,10 @@ video {
   margin-top: 21px;
 }
 
+.mt-\[31px\] {
+  margin-top: 31px;
+}
+
 .flex {
   display: flex;
 }
@@ -1034,6 +1038,10 @@ video {
 
 .gap-\[9px\] {
   gap: 9px;
+}
+
+.gap-y-\[36px\] {
+  row-gap: 36px;
 }
 
 .overflow-hidden {
@@ -2090,6 +2098,10 @@ input[type="date"] {
     margin-bottom: 40px;
   }
 
+  .lg\:mt-\[48px\] {
+    margin-top: 48px;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -2252,6 +2264,10 @@ input[type="date"] {
 
   .lg\:gap-\[79px\] {
     gap: 79px;
+  }
+
+  .lg\:gap-y-\[0px\] {
+    row-gap: 0px;
   }
 
   .lg\:p-0 {
