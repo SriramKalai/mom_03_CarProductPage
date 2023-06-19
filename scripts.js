@@ -258,7 +258,7 @@ function pickupfun(x){
                     <span class="font-[700]">Date</span>
                     <div>
                         <form action="/action_page.php">
-                            <input type="date" id="pickupdate" name="pickupdate" class="cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
+                            <input aria-label="date" type="date" id="${y}pickupdate" name="pickupdate" class=" cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
                         </form>
                     </div> 
                 </div>
