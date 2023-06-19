@@ -263,9 +263,9 @@ function pickupfun(x){
                 <div class="w-[1px] h-[48px] bg-[#C3D4E9] ml-[24px] lg:ml-[11px]"></div>
                 <div class="flex flex-col justify-start w-full min-w-[127px] px-[20px]">
                     <span class="font-[700]">Date</span>
-                    <div>
+                    <div class="">
                         <form action="/action_page.php">
-                            <input aria-label="date" type="date" id="${y}pickupdate" name="pickupdate" class=" cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
+                            <input aria-label="date" type="date" id="${y}pickupdate" name="pickupdate" class="${y}_date cursor-pointer text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
                         </form>
                     </div> 
                 </div>
@@ -319,11 +319,12 @@ function heartchange(info){
     
 }
 // total number of cars
+let totalcarpresnt;
 function totalitem(){
     const total=document.querySelector(".totalitems")
-    const productlen=product.length;
-    console.log(productlen)
-    total.innerHTML=`${productlen} car`;
+    totalcarpresnt=product.length;
+    console.log(totalcarpresnt)
+    total.innerHTML=`${totalcarpresnt} car`;
   }
 
 
@@ -442,6 +443,14 @@ function filterProducts(products, filter) {
 //   show more cars
 function showmore(){
     filter.perpage[0]+=3;
+    if (filter.perpage[0] == totalcarpresnt){
+       const showMoreButton =document.querySelector(".showMoreButton")
+       showMoreButton.classList.add("hidden");
+
+       const centercontainer=document.querySelector(".centercontainer");
+       centercontainer.classList.add("md:mb-[40px]")
+    }
+
     filteredproduct=filterProducts(product, filter)    
     productview() ;
 }
