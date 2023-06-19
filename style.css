@@ -2058,6 +2058,14 @@ input[type="date"] {
     margin-top: 64px;
   }
 
+  .lg\:mt-\[61px\] {
+    margin-top: 61px;
+  }
+
+  .lg\:mb-\[40px\] {
+    margin-bottom: 40px;
+  }
+
   .lg\:block {
     display: block;
   }
