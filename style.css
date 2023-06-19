@@ -1817,6 +1817,7 @@ input[type="date"]::after {
 input[type="date"] {
   border: none;
   outline: none;
+  min-width: 103px;
   /* cursor: pointer; */
   width: -webkit-fill-available;
 }
