@@ -342,7 +342,7 @@ function productview(){
             </div>
             <div class="flex h-[130px] justify-center lg:block lg:h-[230px]">
                 <div class="flex justify-between items-center  lg:justify-center lg:h-[160px] lg:items-end">
-                    <div class="flex [w-221px] justify-center flex-col">
+                    <div class="flex justify-center flex-col">
                         <div class="flex justify-center ml-[-20px] lg:ml-[0px]">
                             <img src="${product.image}" class="min-h-[52px] max-h-[68px] h-fit max-w-[166px] w-fit lg:max-h-[160px] lg:max-w-[252px]" alt="${product.name}">
                         </div>
