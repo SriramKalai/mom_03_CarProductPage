@@ -847,6 +847,14 @@ video {
   height: 27px;
 }
 
+.h-\[220px\] {
+  height: 220px;
+}
+
+.h-\[230px\] {
+  height: 230px;
+}
+
 .max-h-\[68px\] {
   max-height: 68px;
 }

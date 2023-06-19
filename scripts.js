@@ -735,7 +735,7 @@ function swapValues() {
 const productlistskelton =document.querySelector(".productlist")
 let productsk=``
 for (let i = 0; i < filter.perpage[0]; i++) {
-    productsk+=`<div class="flex w-[100%] h-[250px]  lg:w-[100%] lg:h-[388px] bg-[#dddddd] rounded-[15px]"></div>`
+    productsk+=`<div class="flex w-[100%] h-[240px]  lg:w-[100%] lg:h-[388px] bg-[#dddddd] rounded-[15px]"></div>`
   }
   productlistskelton.innerHTML=productsk;
 
