@@ -2,6 +2,7 @@
 let product;
 let filteredproduct;
 const productCard=document.querySelector(".productlist")
+let locationDetails;
 
 let filter={
     type:[],
@@ -9,6 +10,28 @@ let filter={
     price:[],
     perpage:[7]
 }
+
+// fetching Bannerdeatils
+function bannerdeatils() {
+    let uri = "https://poised-bat-bathing-suit.cyclic.app/bannerdetails";
+    fetch(uri) 
+      .then(response => response.json())
+      .then(data => {
+        locationDetails = data; 
+       console.log(locationDetails["Pick-up"]); 
+       renderpickfun();
+       locaationdropdown();
+       locatinpickup();
+      })
+      .catch(error => {
+        console.error('Error fetching JSON data:', error);
+      });
+  }
+
+document.addEventListener("DOMContentLoaded", bannerdeatils);
+
+
+
 
 
 
@@ -99,7 +122,7 @@ function displayCarCapacities() {
     var carCapacitiesHTML = `<ul>`;
 
     for (var capacity in carCapacities) {
-        if (capacity!=8){
+        if (capacity<8){
         carCapacitiesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'>  
         <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]">${capacity} Person</span>  
         <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carCapacities[capacity]})</span></label></li>`;}
@@ -145,7 +168,27 @@ function updateFilter(checkbox) {
     console.log(filter);
 }
 
+// gendropdown for location
 
+function gendropdown(info){
+    let data=locationDetails[`${info}`]
+    let template=``
+    data.forEach((value)=>{
+        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[20px]">${value}</span></li>`
+    })
+    return template
+}
+
+// gen
+function gentimedetails(info){
+    let data=locationDetails["time"]
+    let template=``
+    console.log(data);
+    data.forEach((value)=>{
+        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[20px]">${value}</span></li>`
+    })
+    return template
+}
 
 
 
@@ -153,12 +196,19 @@ function updateFilter(checkbox) {
 
 function pickupfun(x){
     let y;
+    let time;
+    let dropdowndetail;
     if (x=="Pick - Up"){
         y="Pick-up";
+        time="pickupTime";
+        dropdowndetail=gendropdown("Pick-up");
     }
     else{
-        y="Drop-Off"
+        y="Drop-Off";
+        time="dropoffTime";
+        dropdowndetail=gendropdown("Drop-Off");
     }
+    let timedetail=gentimedetails(time);
 
     console.log(x)
     return `
@@ -176,18 +226,18 @@ function pickupfun(x){
                         <span class="font-[700]">Locations</span>
                         <div class="${y}">
                             <button href="#" role="button" data-value="" class="${y}__button" id="${y}swap">
-                            <span class="text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">Semarang</span>
-                            <i class="downarrow">
+                            <span class="text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
+                                <p class="md:hidden lg:block cd:hidden">Semarang</p>
+                                <p class="hidden md:block lg:hidden cd:block">Select your city</p>
+                            </span>
+                            <i class="downarrow cd:mr-[14px]">
                                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.00015 5.3997C4.65016 5.3997 4.30015 5.2647 4.03515 4.9997L0.775155 1.7397C0.630155 1.5947 0.630155 1.3547 0.775155 1.2097C0.920155 1.0647 1.16015 1.0647 1.30515 1.2097L4.56515 4.4697C4.80515 4.7097 5.19516 4.7097 5.43515 4.4697L8.69515 1.2097C8.84015 1.0647 9.08015 1.0647 9.22515 1.2097C9.37016 1.3547 9.37016 1.5947 9.22515 1.7397L5.96516 4.9997C5.70016 5.2647 5.35015 5.3997 5.00015 5.3997Z" fill="#1A202C" stroke="#1A202C" stroke-width="0.5"/>
                                 </svg>                            
                             </i>
                             </button>
                             <ul class="${y}__list">
-                            <li data-value="1" class="${y}__list-item"><span class="dropdowntext">Bangalore</span></li>
-                            <li data-value="2" class="${y}__list-item"><span class="dropdowntext">Karur</span></li>
-                            <li data-value="3" class="${y}__list-item"><span class="dropdowntext">Salem</span></li>
-                            <li data-value="4" class="${y}__list-item"><span class="dropdowntext">Coimbatore</span></li>
+                                ${dropdowndetail}
                             </ul>
                         </div>                        
                     </div>
@@ -199,6 +249,23 @@ function pickupfun(x){
                 <div class="w-[1px] h-[48px] bg-[#C3D4E9] mr-[20px]"></div>
                 <div class="flex flex-col w-full">
                     <span class="font-[700]">Time</span>
+                    <div class="${time}">
+                        <button href="#" role="button" data-value="" class="${time}__button" id="${time}swap">
+                        <span class="text-[13px] text-[#90A3BF] tracking-[-0.01em] font-[400]">
+                            <p class="md:hidden lg:block cd:hidden">07:00</p>
+                            <p class="hidden md:block lg:hidden cd:block">Select your time</p>
+                        </span>
+                        
+                        <i class="downarrow cd:mr-[17px]">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.00015 5.3997C4.65016 5.3997 4.30015 5.2647 4.03515 4.9997L0.775155 1.7397C0.630155 1.5947 0.630155 1.3547 0.775155 1.2097C0.920155 1.0647 1.16015 1.0647 1.30515 1.2097L4.56515 4.4697C4.80515 4.7097 5.19516 4.7097 5.43515 4.4697L8.69515 1.2097C8.84015 1.0647 9.08015 1.0647 9.22515 1.2097C9.37016 1.3547 9.37016 1.5947 9.22515 1.7397L5.96516 4.9997C5.70016 5.2647 5.35015 5.3997 5.00015 5.3997Z" fill="#1A202C" stroke="#1A202C" stroke-width="0.5"/>
+                            </svg>                            
+                        </i>
+                        </button>
+                        <ul class="${time}__list">
+                            ${timedetail}
+                        </ul>
+                    </div> 
                 </div>
             </div>
         </div>`
@@ -206,8 +273,10 @@ function pickupfun(x){
 const pickup=document.querySelector(".pickup")
 const dropoff=document.querySelector(".dropoff")
 
-pickup.innerHTML=pickupfun("Pick - Up")
-dropoff.innerHTML=pickupfun("Drop - Off")
+function renderpickfun(){
+    pickup.innerHTML=pickupfun("Pick - Up")
+    dropoff.innerHTML=pickupfun("Drop - Off")
+}
 
 
 
@@ -333,23 +402,15 @@ function filterProducts(products, filter) {
     //price filter
     if (filter.price.length > 0) {
         filteredProducts = filteredProducts.filter(product =>
-            // console.log(product.price)
             parseInt(product.price) < filter.price[0]
           
         );
       }
   
-    // Determine number of results per page
     const perPage = filter.perpage[0];
-  
-    // Get the desired page based on perPage value
     const page = 1
-
-    // Calculate the start and end indices for the current page
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
-  
-    // Get the products for the current page
     const result = filteredProducts.slice(startIndex, endIndex);  
     return result;
   }
@@ -472,24 +533,44 @@ function showleftside(){
 
 
 //   dropdown  Pick up
-
-document.querySelector('.Pick-up__button').addEventListener('click', function() {
-    document.querySelector('.Pick-up__list').classList.toggle('active');
-  });
-  
-  var listItems = document.querySelectorAll('.Pick-up__list-item');
-  listItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-      var itemValue = this.getAttribute('data-value');
-      console.log(itemValue);
-      var buttonText = this.innerText;
-      var button = document.querySelector('.Pick-up__button span');
-      button.innerText = buttonText;
-      button.parentNode.setAttribute('data-value', itemValue);
-      document.querySelector('.Pick-up__list').classList.remove('active');
+function locatinpickup(){
+    document.querySelector('.Pick-up__button').addEventListener('click', function() {
+        document.querySelector('.Pick-up__list').classList.toggle('active');
     });
-  });
-  
+    
+    var listItems = document.querySelectorAll('.Pick-up__list-item');
+    listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+        var itemValue = this.getAttribute('data-value');
+        console.log(itemValue);
+        var buttonText = this.innerText;
+        var button = document.querySelector('.Pick-up__button span');
+        button.innerText = buttonText;
+        button.parentNode.setAttribute('data-value', itemValue);
+        document.querySelector('.Pick-up__list').classList.remove('active');
+        });
+    });
+
+
+    // pick up time
+    document.querySelector('.pickupTime__button').addEventListener('click', function() {
+        document.querySelector('.pickupTime__list').classList.toggle('active');
+    });
+    
+    var listItems = document.querySelectorAll('.pickupTime__list-item');
+    listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+        var itemValue = this.getAttribute('data-value');
+        console.log(itemValue);
+        var buttonText = this.innerText;
+        var button = document.querySelector('.pickupTime__button span');
+        button.innerText = buttonText;
+        button.parentNode.setAttribute('data-value', itemValue);
+        document.querySelector('.pickupTime__list').classList.remove('active');
+        });
+    });
+}
+    
 
 
 //   price slider
@@ -529,25 +610,45 @@ sliderLeft.addEventListener("change",inputMinSliderLeft);
 
 
 // dropdown for drop
-
-document.querySelector('.Drop-Off__button').addEventListener('click', function() {
-    document.querySelector('.Drop-Off__list').classList.toggle('active');
-  });
-  
-  var listItems = document.querySelectorAll('.Drop-Off__list-item');
-  listItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-      var itemValue = this.getAttribute('data-value');
-      console.log(itemValue);
-      var buttonText = this.innerText;
-      console.log(buttonText)
-      var button = document.querySelector('.Drop-Off__button span');
-      button.innerText = buttonText;
-      button.parentNode.setAttribute('data-value', itemValue);
-      document.querySelector('.Drop-Off__list').classList.remove('active');
+function locaationdropdown(){
+    document.querySelector('.Drop-Off__button').addEventListener('click', function() {
+        document.querySelector('.Drop-Off__list').classList.toggle('active');
     });
-  });
+    
+    var listItems = document.querySelectorAll('.Drop-Off__list-item');
+    listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+        var itemValue = this.getAttribute('data-value');
+        console.log(itemValue);
+        var buttonText = this.innerText;
+        console.log(buttonText)
+        var button = document.querySelector('.Drop-Off__button span');
+        button.innerText = buttonText;
+        button.parentNode.setAttribute('data-value', itemValue);
+        document.querySelector('.Drop-Off__list').classList.remove('active');
+        });
+    });
 
+
+    // drop time 
+    document.querySelector('.dropoffTime__button').addEventListener('click', function() {
+        document.querySelector('.dropoffTime__list').classList.toggle('active');
+    });
+    
+    var listItems = document.querySelectorAll('.dropoffTime__list-item');
+    listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+        var itemValue = this.getAttribute('data-value');
+        console.log(itemValue);
+        var buttonText = this.innerText;
+        console.log(buttonText)
+        var button = document.querySelector('.dropoffTime__button span');
+        button.innerText = buttonText;
+        button.parentNode.setAttribute('data-value', itemValue);
+        document.querySelector('.dropoffTime__list').classList.remove('active');
+        });
+    });
+}
 
 
 //  swap contentt
@@ -575,3 +676,7 @@ function swapValues() {
     // button1.textContent = button2.textContent;
     // button2.textContent = temp;
   }
+
+
+
+  
