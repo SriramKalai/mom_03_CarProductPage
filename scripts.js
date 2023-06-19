@@ -336,7 +336,7 @@ function productview(){
   
     filteredproduct.forEach(product => {
       template += `
-      <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%] lg:mt-[5px]">
+      <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%]">
             <div class="justify-between flex">
                 <div class="flex flex-col">
                     <span class="text-[16px] text-[#1A202C] font-[600] tracking-[-0.02em] lg:text-[22px] lg:tracking-[-0.03]"><a href="/#">${product.name}</a></span>

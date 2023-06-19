@@ -1327,7 +1327,7 @@ video {
 
 @media (min-width: 1024px) {
   .grid-container {
-    row-gap: 27px;
+    row-gap: 36px;
     -moz-column-gap: 22px;
          column-gap: 22px;
   }
