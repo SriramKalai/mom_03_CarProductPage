@@ -744,11 +744,11 @@ for (let i = 0; i < 5; i++) {
     footersk+=`<div class="flex w-[110px] h-[25px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[24px]"}"></div>`
   }
 
-const footerAboutsk=document.querySelector(".footerAbout")
-footerAboutsk.innerHTML=footersk;
-const footerSocialsk=document.querySelector(".footerSocial")
-footerSocialsk.innerHTML=footersk;
-const footercommunitysk=document.querySelector(".footercommunity")
-footercommunitysk.innerHTML=footersk;
-const footerSocialdessk=document.querySelector(".footerSocialdes")
-footerSocialdessk.innerHTML=footersk;
+// const footerAboutsk=document.querySelector(".footerAbout")
+// footerAboutsk.innerHTML=footersk;
+// const footerSocialsk=document.querySelector(".footerSocial")
+// footerSocialsk.innerHTML=footersk;
+// const footercommunitysk=document.querySelector(".footercommunity")
+// footercommunitysk.innerHTML=footersk;
+// const footerSocialdessk=document.querySelector(".footerSocialdes")
+// footerSocialdessk.innerHTML=footersk;
