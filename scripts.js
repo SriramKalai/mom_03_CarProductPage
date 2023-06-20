@@ -91,8 +91,10 @@ document.addEventListener("DOMContentLoaded", fetchData);
 
 // Function to display the unique car types with counts
 function displayCarTypes() {
+    // Create an object to store the car types and their counts
     var carTypes = {};
-    // Loop
+
+    // Loop through the products and count the car types
     for (var i = 0; i < product.length; i++) {
         var car = product[i];
         var carType = car.type;
@@ -103,6 +105,8 @@ function displayCarTypes() {
             carTypes[carType] = 1;
         }
     }
+
+    // Display the car types and their counts
     var carTypesElement = document.getElementById("carTypes");
     var carTypesHTML = `<ul>`;
 
@@ -118,7 +122,9 @@ function displayCarTypes() {
 
 // Function to display the unique car capacities with counts
 function displayCarCapacities() {
+    // Create an object to store the car capacities and their counts
     var carCapacities = {};
+
     // Loop through the products and count the car capacities
     for (var i = 0; i < product.length; i++) {
         var car = product[i];
@@ -620,6 +626,10 @@ document.getElementById("slider0to50").oninput = function() {
 //function input update to slider
 function sliderLeftInput(){
    sliderLeft.value=inputMin.value;
+}
+function sliderRightInput(){
+   sliderRight.value=(inputMax.value);
+}
 
 
 console.log(sliderLeftInput)
