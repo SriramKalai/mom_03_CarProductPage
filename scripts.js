@@ -606,14 +606,14 @@ header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:
                     <a href="/#"><img src="${locationDetails["header"][0]["profileImage"]}" alt="profile" class="w-[28px] h-[28px]"></a>
                     </div>
                     <div class="lg:hidden">
-                    <a href="/#"><img src="${locationDetails["header"][0]["brandlogomobile"]}" alt="brand logo" class="w-[100px] h-[24px]"></a>
+                    <a href="/#"><img src="${locationDetails["header"][0]["brandlogomobile"]}" alt="brand logo" class="w-[99px] h-[20px]"></a>
                     </div>
                     <div class="flex mt-[25px] flex-1 gap-4 justify-between items-center w-full lg:hidden">
                     <div class="mobsearchlabel flex w-full">
                         <input type="text" placeholder="&nbsp;Search something here" class="mobsearchinput min-w-[200px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[10px] placeholder-[#596780] placeholder text-[14px]  font-medium flex-1 grow">
                     </div>
                     <div>
-                        <button class="border-[#C3D4E9] border-[1px] rounded-[10px] p-[10px]" onclick="showleftside()">
+                        <button class="border-[#C3D4E9] border-[1px] rounded-[10px] p-[10px]" onclick="showleftside()"  aria-label="Filter button">
                             <svg  class="w-[34px] h-[24px]"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22 6.5H16" stroke="#596780" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M6 6.5H2" stroke="#596780" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -627,7 +627,7 @@ header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:
                     </div>
                     <div class="lg:flex md:gap-[40px] lg:gap-[79px] pl-[20px] w-full hidden">
                     <div class="flex">
-                        <img src="${locationDetails["header"][0]["brandlogodes"]}" alt="brand logo" class="w-[166px] h-[28px] mt-[7px]">
+                        <img src="${locationDetails["header"][0]["brandlogodes"]}" alt="brand logo" class="w-[166px]  max-w-none h-[26px] mt-[7px]">
                     </div>
                     <div class="searchlabel flex w-full">
                         <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Search something here" class="searchinput min-w-[200px] max-w-[492px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[70px] placeholder-[#596780] placeholder text-[14px]  font-[500] flex-1 grow">
