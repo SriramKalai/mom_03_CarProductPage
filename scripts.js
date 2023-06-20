@@ -373,19 +373,6 @@ function footercontent(){
     const lastline=document.querySelector(".lastline")
     const lastlinedes=document.querySelector(".lastlinedes");
 
-
-    function termtemplate(info){
-        return `<a href="/#" class="lg:text-[17px] text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${info}</a>`
-    }
-    lastlinedes.innerHTML=`
-                        <div class="flex">
-                             ${termtemplate(pagedetail[1]["terms"][2])}
-                        </div>
-                        <div class="flex gap-[70px]">
-                            ${termtemplate(pagedetail[1]["terms"][0])}
-                            ${termtemplate(pagedetail[1]["terms"][1])}
-                        </div>`
-
     const footerData=pagedetail[0];    
     footerHeaderDetails.innerHTML=`                       
                         <div class="flex flex-col">
@@ -410,15 +397,59 @@ function footercontent(){
     footerSocialtemdes.innerHTML=templatefooter;
     footerCreater(pagedetail[1]["community"])
     footercommunity.innerHTML=templatefooter;
- 
-    lastline.innerHTML=`
-            <div class="flex justify-between" >
-                ${termtemplate(pagedetail[1]["terms"][0])}
-                ${termtemplate(pagedetail[1]["terms"][1])}
-            </div>
-            <div class="mt-[30px]">
-                ${termtemplate(pagedetail[1]["terms"][2])}
-            </div>`
+
+    // function termtemplate(info){
+    //     return `<a href="/#" class="lg:text-[17px] text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${info}</a>`
+    // }
+    // lastlinedes.innerHTML=`
+    //                     <div class="flex">
+    //                          ${termtemplate(pagedetail[1]["terms"][2])}
+    //                     </div>
+    //                     <div class="flex gap-[70px]">
+    //                         ${termtemplate(pagedetail[1]["terms"][0])}
+    //                         ${termtemplate(pagedetail[1]["terms"][1])}
+    //                     </div>` 
+    // lastline.innerHTML=`
+    //         <div class="flex justify-between" >
+    //             ${termtemplate(pagedetail[1]["terms"][0])}
+    //             ${termtemplate(pagedetail[1]["terms"][1])}
+    //         </div>
+    //         <div class="mt-[30px]">
+    //             ${termtemplate(pagedetail[1]["terms"][2])}
+    //         </div>`
+
+    function termtemplate(info) {
+        return `<a href="/#" class="lg:text-[17px] text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${info}</a>`;
+      }
+      
+      const lastlinedesContainer = document.querySelector('.lastlinedes');
+      const lastlineContainer = document.querySelector('.lastline');
+      
+      const terms = pagedetail[1]["terms"];
+      
+      // Generate HTML for the "lastlinedes" container
+      const lastlinedesHTML = `
+        <div class="flex">
+          ${termtemplate(terms[2])}
+        </div>
+        <div class="flex gap-[70px]">
+          ${terms.slice(0, 2).map(termtemplate).join('')}
+        </div>
+      `;
+      
+      // Generate HTML for the "lastline" container
+      const lastlineHTML = `
+        <div class="flex justify-between">
+          ${terms.slice(0, 2).map(termtemplate).join('')}
+        </div>
+        <div class="mt-[30px]">
+          ${termtemplate(terms[2])}
+        </div>
+      `;
+      
+      // Set the generated HTML to the respective containers
+      lastlinedesContainer.innerHTML = lastlinedesHTML;
+      lastlineContainer.innerHTML = lastlineHTML;
 }
 //show and hide the dialog box
 function showleftside(){
@@ -627,7 +658,7 @@ header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:
                     </div>
                     <div class="lg:flex md:gap-[40px] lg:gap-[79px] pl-[20px] w-full hidden">
                     <div class="flex">
-                        <img src="${locationDetails["header"][0]["brandlogodes"]}" alt="brand logo" class="w-[166px]  max-w-none h-[26px] mt-[7px]">
+                        <img src="${locationDetails["header"][0]["brandlogodes"]}" alt="brand logo" class="brandogodes w-[166px] mb-[7px] max-w-none mt-[7px]">
                     </div>
                     <div class="searchlabel flex w-full">
                         <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Search something here" class="searchinput min-w-[200px] max-w-[492px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[70px] placeholder-[#596780] placeholder text-[14px]  font-[500] flex-1 grow">

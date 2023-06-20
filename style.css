@@ -722,6 +722,10 @@ video {
   margin-top: 7px;
 }
 
+.mb-\[7px\] {
+  margin-bottom: 7px;
+}
+
 .flex {
   display: flex;
 }
@@ -732,10 +736,6 @@ video {
 
 .hidden {
   display: none;
-}
-
-.h-\[100\%\] {
-  height: 100%;
 }
 
 .h-\[100px\] {
@@ -780,6 +780,10 @@ video {
 
 .h-\[24px\] {
   height: 24px;
+}
+
+.h-\[26px\] {
+  height: 26px;
 }
 
 .h-\[27px\] {
@@ -845,10 +849,6 @@ video {
 
 .min-h-\[52px\] {
   min-height: 52px;
-}
-
-.w-\[100\%\] {
-  width: 100%;
 }
 
 .w-\[100px\] {
@@ -923,6 +923,10 @@ video {
   width: 90%;
 }
 
+.w-\[99px\] {
+  width: 99px;
+}
+
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
@@ -954,6 +958,10 @@ video {
 
 .max-w-\[492px\] {
   max-width: 492px;
+}
+
+.max-w-none {
+  max-width: none;
 }
 
 .flex-1 {
@@ -1346,6 +1354,10 @@ video {
 
 .grid-container {
   grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+}
+
+.brandogodes{
+  height: 26px;
 }
 
 .dropdowntext {
@@ -1932,10 +1944,6 @@ input[type="date"] {
     display: none;
   }
 
-  .md\:w-\[100\%\] {
-    width: 100%;
-  }
-
   .md\:w-full {
     width: 100%;
   }
@@ -2137,10 +2145,6 @@ input[type="date"] {
     max-height: 160px;
   }
 
-  .lg\:w-\[100\%\] {
-    width: 100%;
-  }
-
   .lg\:w-\[116px\] {
     width: 116px;
   }
@@ -2302,10 +2306,6 @@ input[type="date"] {
 
   .lg\:text-\[24px\] {
     font-size: 24px;
-  }
-
-  .lg\:text-\[13px\] {
-    font-size: 13px;
   }
 
   .lg\:leading-\[150\%\] {
