@@ -598,6 +598,10 @@ video {
   margin-bottom: 35px;
 }
 
+.mb-\[7px\] {
+  margin-bottom: 7px;
+}
+
 .ml-\[-20px\] {
   margin-left: -20px;
 }
@@ -722,10 +726,6 @@ video {
   margin-top: 7px;
 }
 
-.mb-\[7px\] {
-  margin-bottom: 7px;
-}
-
 .flex {
   display: flex;
 }
@@ -780,10 +780,6 @@ video {
 
 .h-\[24px\] {
   height: 24px;
-}
-
-.h-\[26px\] {
-  height: 26px;
 }
 
 .h-\[27px\] {
@@ -934,6 +930,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[133px\] {
+  width: 133px;
 }
 
 .min-w-\[127px\] {
@@ -1354,10 +1354,6 @@ video {
 
 .grid-container {
   grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
-}
-
-.brandogodes{
-  height: 26px;
 }
 
 .dropdowntext {
