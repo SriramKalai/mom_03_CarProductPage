@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    <title>Task 03</title>
+    <title>CAR RENTAL WEBPAGE</title>
 </head>
 <body class="bg-[#f3f1f1]">
     <div class="flex justify-center">
@@ -18,8 +18,8 @@
 
     <!-- header -->
         <div class="header bg-white h-[222px] py-8 px-6 lg:pl-[40px] lg:pr-[32px] lg:py-[40px] lg:h-[124px] lg:justify-between  lg:flex lg:items-center">
-        </div>
-        
+        </div>    
+
         <div class="centercontainer lg:flex lg:gap-[6px]  ">
             <!-- left side container -->
             <div class="">
@@ -27,7 +27,7 @@
                     <div class="flex justify-end lg:hidden">
                         <button class="closebutton w-[20px] rounded-full p-[2px]" onclick="filterapply()">&#xf00d;</button>
                     </div>
-                    <div class=" leftside bg-white h-fit w-[100%] lg:h-[100%] lg:w-[260px] ld:w-[360px] justify-start  hidden lg:flex flex-col pt-[20px] lg:pt-[32px] pl-[32px]">
+                    <div class=" leftside bg-white h-fit w-full lg:h-full lg:w-[260px] ld:w-[360px] justify-start  hidden lg:flex flex-col pt-[20px] lg:pt-[32px] pl-[32px]">
                         <div class="flex flex-col h-[358px]">
                             <span class="text-[#90A3BF] font-[600] text-[16px] lg:text-[12px] tracking-[-0.02em]">T Y P E</span>
                             <div id="carTypes"></div>
@@ -55,15 +55,14 @@
                         <button  class="bg-blue-500 hover:bg-blue-600 text-white  rounded-md w-[110px] h-[40px] ml-[4px] text-[16px]" aria-label="applybutton" onclick="filterapply()">Apply</button>
                     </div>
                 </dialog>
-            </div>              
-
-            <!-- right side container -->
+            </div>      
             
+            <!-- right side container -->
             <!-- body pick up -->
-            <div class="flex w-full flex-col h-[100%]">
+            <div class="flex w-full flex-col h-full">
                 <div class="px-[16px] sd:px-6 pt-8 lg:pr-[32px] lg:pl-[24px] ">
-                    <div class="lg:flex w-[100%] lg:justify-between lg:gap-[20px] h-[100%]">
-                        <div class="pickup w-[100%]  h-[120px] lg:h-[132px]"></div>                
+                    <div class="lg:flex w-full lg:justify-between lg:gap-[20px] h-full">
+                        <div class="pickup w-full h-[120px] lg:h-[132px]"></div>                
                         <div class="flex justify-center mt-[-15px] lg:items-center">
                             <button class="bg-[#3563E9] rounded-[10px] w-[60px] h-[60px] p-[20px] lg:mt-[13px] lg:absolute" aria-label="swap" onclick="swapValues()">
                                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +73,7 @@
                                     </svg>
                             </button>
                         </div>              
-                        <div class="dropoff mt-[-13px] lg:mt-[0px] w-[100%] h-[120px] lg:h-[132px]"></div>
+                        <div class="dropoff mt-[-13px] lg:mt-[0px] w-full h-[120px] lg:h-[132px]"></div>
                     </div>
                 </div>
 
@@ -90,14 +89,10 @@
             </div>     
         </div>
     
-
-    
-
-
         <!-- footer -->
         <div class="mt-[30px] lg:mt-[0px] md:bg-white md:mt-[0px] md:px-[60px] md:pt-[80px] md:pb-[20px]">
             <div class="flex">
-                <div class="flex flex-col md:flex-row pt-[5px] px-[24px] md:px-[0px]  md:justify-between md:w-[100%] md:pt-[11px] md:mb-[46px]">
+                <div class="flex flex-col md:flex-row pt-[5px] px-[24px] md:px-[0px]  md:justify-between md:w-full md:pt-[11px] md:mb-[46px]">
                     <div class="footerHeader"></div>                            
                     <div class="grid  grid-cols-[207px,auto] lg:grid-cols-[212px,213px,152px] md:grid-cols-[160px,160px,152px] md:mt-[-10px]">
                         <div class="flex flex-col mt-[48px] md:mt-[0px]">
@@ -120,8 +115,7 @@
                 </div>
             </div>
             <div class="lastlinedes border-t-[1px] border-[#131313] border-opacity-[0.1] hidden md:flex justify-between items-center h-[100px]">          
-            </div>     
-        <!-- last line -->
+            </div>
             <div class="mt-[48px] px-[24px] flex md:justify-center mb-[24px] md:hidden">
                 <div class="lastline flex flex-col w-full">           
                 </div>

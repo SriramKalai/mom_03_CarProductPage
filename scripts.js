@@ -1,9 +1,9 @@
-// gobal variable
 let product;
 let filteredproduct;
 const productCard=document.querySelector(".productlist")
 let locationDetails;
 let cityplaceholder;
+let totalcarpresnt;
 
 let filter={
     type:[],
@@ -12,86 +12,52 @@ let filter={
     perpage:[7]
 }
 
-// adjust the value of the perpage
- if (window.matchMedia("(min-width: 1439px)").matches) {
-    filter.perpage [0]=9; 
-}
+// adjust the value of the perpage and cityplaceholder
+filter.perpage [0]= window.matchMedia("(min-width: 1439px)").matches ? 9 : 7 ;
+cityplaceholder = (window.matchMedia("(min-width: 767px) and (max-width: 1024px)").matches) || (window.innerWidth > 1367) ? "Select your city" : "Semarang";
 
-else {
-    filter.perpage [0]=7;
-}
-
-
-// banner place holder value 
-if ((window.matchMedia("(min-width: 767px) and (max-width: 1024px)").matches) || (window.innerWidth > 1367)) {
-    cityplaceholder = "Select your city";
-} else {
-    cityplaceholder = "Semarang";
-}
-
-
-// fetching Bannerdeatils
-function bannerdeatils() {
-    let uri = "https://poised-bat-bathing-suit.cyclic.app/bannerdetails";
-    fetch(uri) 
+function fetchDataFromURLs() {
+  const urls = [
+    "https://poised-bat-bathing-suit.cyclic.app/bannerdetails",
+    "https://poised-bat-bathing-suit.cyclic.app/cars",
+    "https://poised-bat-bathing-suit.cyclic.app/footer"
+  ];
+  const fetchData = url => {
+    return fetch(url)
       .then(response => response.json())
-      .then(data => {
-        locationDetails = data; 
-       console.log(locationDetails["Pick-up"]); 
-       renderpickfun();
-       locaationdropdown();
-       locatinpickup();
-       header();
-      })
       .catch(error => {
         console.error('Error fetching JSON data:', error);
+        throw error;
       });
-  }
+  };
+  Promise.all(urls.map(fetchData))
+    .then(([bannerDetails, products, pageDetails]) => {
+      locationDetails = bannerDetails;
+      product = products;
+      pagedetail = pageDetails;
+      allfunction();
+    })
+    .catch(error => {
+      console.error('Error fetching data from URLs:', error);
+    });
+}
+fetchDataFromURLs();
 
-document.addEventListener("DOMContentLoaded", bannerdeatils);
+function  allfunction(){
+    renderpickfun();
+    locaationdropdown();
+    locatinpickup();
+    header();
+    displayCarTypes();
+    displayCarCapacities();
+    filteredproduct=filterProducts(product, filter);
+    totalitem();
+    productview() ;
+    footercontent();
+}
 
-
-
-
-
-
-
-
-
-
-// fetching the infomation from json
-
-function fetchData() {
-    let uri = "https://poised-bat-bathing-suit.cyclic.app/cars";
-    fetch(uri) 
-      .then(response => response.json())
-      .then(data => {
-        product = data; 
-       console.log(product); 
-        displayCarTypes();
-        displayCarCapacities();
-        filteredproduct=filterProducts(product, filter)    
-        totalitem();
-        productview() ;
-      })
-      .catch(error => {
-        console.error('Error fetching JSON data:', error);
-      });
-  }
-
-document.addEventListener("DOMContentLoaded", fetchData);
-
-// product
-
-
-
-
-
-
-
-// Function to display the unique car
+// Function to display the unique car types with counts
 function displayCarTypes() {
-    
     var carTypes = {};
     for (var i = 0; i < product.length; i++) {
         var car = product[i];
@@ -103,23 +69,17 @@ function displayCarTypes() {
             carTypes[carType] = 1;
         }
     }
-
     var carTypesElement = document.getElementById("carTypes");
     var carTypesHTML = `<ul>`;
-
     for (var type in carTypes) {
         carTypesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carType' value='${type}' onchange='updateFilter(this)'>  
         <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]">${type}</span>  
         <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carTypes[type]})</span></label></li>`;
     }
-
     carTypesHTML += `</ul>`;
     carTypesElement.innerHTML = carTypesHTML;
 }
-
-// Function to display the unique car capacities with counts
 function displayCarCapacities() {
-  
     var carCapacities = {};
     for (var i = 0; i < product.length; i++) {
         var car = product[i];
@@ -131,23 +91,13 @@ function displayCarCapacities() {
             carCapacities[capacity] = 1;
         }
     }
-
-    // Display the car capacities and their counts
     var carCapacitiesElement = document.getElementById("carCapacities");
     var carCapacitiesHTML = `<ul>`;
-
     for (var capacity in carCapacities) {
-        if (capacity<8){
+        const capacityextra= capacity<8 ? "Person" : "or More"
         carCapacitiesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'>  
-        <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]">${capacity} Person</span>  
+        <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]">${capacity} ${capacityextra}</span>  
         <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carCapacities[capacity]})</span></label></li>`;}
-        else{
-            carCapacitiesHTML += `<li><label class="cursor-pointer flex pl-[2px]  mt-[32px] items-center"><input  class="w-[20px] h-[20px] mr-10px rounded-[4px]" type='checkbox' name='carCapacity' value="${capacity}" onchange='updateFilter(this)'> 
-            <span class="text-[21px] ml-[9px] text-[#596780] tracking-[-0.02em] font-[600] mt-[-7px]"> ${capacity}  or More </span> 
-            <span class="text-[21px] text-[#90A3BF] tracking-[-0.02em] font-[600] mt-[-7px]">&nbsp;(${carCapacities[capacity]})</span></label></li>`;
-        }
-    }
-
     carCapacitiesHTML += `</ul>`;
     carCapacitiesElement.innerHTML = carCapacitiesHTML;
 }
@@ -156,7 +106,6 @@ function displayCarCapacities() {
 function updateFilter(checkbox) {
     var value = checkbox.value;
     var filterName = checkbox.name;
-
     if (filterName === "carType") {
         if (checkbox.checked) {
             filter.type.push(value);
@@ -177,38 +126,20 @@ function updateFilter(checkbox) {
         }
     }
     filteredproduct=filterProducts(product, filter) ;
-    console.log(filteredproduct)
     productview() ;
-
-    console.log(filter);
 }
 
 // gendropdown for location
-
 function gendropdown(info){
-    let data=locationDetails[`${info}`]
+    let data= info!="pickupTime" && info!="dropoffTime"  ? locationDetails[`${info}`] : locationDetails["time"];
     let template=``
     data.forEach((value)=>{
         template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[16px]">${value}</span></li>`
     })
     return template
 }
-
-// gen
-function gentimedetails(info){
-    let data=locationDetails["time"]
-    let template=``
-    console.log(data);
-    data.forEach((value)=>{
-        template+=`<li data-value="1" class="${info}__list-item"><span class="dropdowntext md:text-[16px]">${value}</span></li>`
-    })
-    return template
-}
-
-
 
 // function for pick and drop
-
 function pickupfun(x){
     let y;
     let time;
@@ -223,9 +154,7 @@ function pickupfun(x){
         time="dropoffTime";
         dropdowndetail=gendropdown("Drop-Off");
     }
-    let timedetail=gentimedetails(time);
-
-    console.log(x)
+    let timedetail=gendropdown(time);
     return `
     <div class="w-full h-[120px] flex bg-white flex-col rounded-[10px] p-[16px] lg:h-[132px] lg:p-[24px]">
             <div class="flex items-center gap-2 mt-[-2px]">
@@ -291,13 +220,10 @@ function pickupfun(x){
 }
 const pickup=document.querySelector(".pickup")
 const dropoff=document.querySelector(".dropoff")
-
 function renderpickfun(){
     pickup.innerHTML=pickupfun("Pick - Up")
     dropoff.innerHTML=pickupfun("Drop - Off")
 }
-
-
 
 // red heart
 function heartchange(info){
@@ -306,30 +232,23 @@ function heartchange(info){
         path.removeAttribute('fill');
         path.setAttribute('stroke', '#90A3BF');
         path.classList.remove("heart")
-        
     } else {
         path.setAttribute('fill', '#ED3F3F');
         path.setAttribute('stroke', 'none');
         path.classList.add("heart")
-    }
-    
+    }   
 }
+
 // total number of cars
-let totalcarpresnt;
 function totalitem(){
     const total=document.querySelector(".totalitems")
     totalcarpresnt=product.length;
-    console.log(totalcarpresnt)
     total.innerHTML=`${totalcarpresnt} car`;
   }
 
-
-
 // product template
 function productview(){
-
-    let template = ''; 
-  
+    let template = '';   
     filteredproduct.forEach(product => {
       template += `
       <div class="bg-white min-w-[300px] w-full h-[240px] rounded-[10px] p-[16px] lg:h-[388px] lg:px-[24px] lg:py-[22px] lg:w-[97%]">
@@ -395,14 +314,9 @@ function productview(){
                 </button>
             </div>
         </div>`; 
-  
-  }); 
+ }); 
   productCard.innerHTML = template; 
-  }
-
-
-
-
+}
 //   filter product
 function filterProducts(products, filter) {
     let filteredProducts = [...products];
@@ -425,54 +339,29 @@ function filterProducts(products, filter) {
             parseInt(product.price) < filter.price[0]
           
         );
-      }
-  
+      }  
     const perPage = filter.perpage[0];
     const page = 1
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
     const result = filteredProducts.slice(startIndex, endIndex);  
     return result;
-  }
+}
 
 
 //   show more cars
 function showmore(){
     filter.perpage[0]+=3;
     if (filter.perpage[0] >= totalcarpresnt){
-        console.log(filter.perpage[0])
        const showMoreButton =document.querySelector(".showMoreButton")
        showMoreButton.classList.remove("flex");
        showMoreButton.classList.add("hidden");
-
        const centercontainer=document.querySelector(".centercontainer");
        centercontainer.classList.add("md:mb-[40px]")
     }
-
-    filteredproduct=filterProducts(product, filter)    
+    filteredproduct=filterProducts(product, filter);    
     productview() ;
 }
-
-
-
-// fetch the page details from webserver
-let pagedetail;
-function pageData() {
-    let uri = "https://poised-bat-bathing-suit.cyclic.app/footer";
-    fetch(uri) 
-      .then(response => response.json())
-      .then(data => {
-        pagedetail = data; 
-       console.log(pagedetail); 
-       footercontent()
-      })
-      .catch(error => {
-        console.error('Error fetching JSON data:', error);
-      });
-  }
-  document.addEventListener("DOMContentLoaded",pageData() );
-
-
 
 //   footer details
 function footercontent(){
@@ -485,94 +374,74 @@ function footercontent(){
     const lastlinedes=document.querySelector(".lastlinedes");
 
 
+    function termtemplate(info){
+        return `<a href="/#" class="lg:text-[17px] text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${info}</a>`
+    }
     lastlinedes.innerHTML=`
                         <div class="flex">
-                            <a href="/#" class="text-[17px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][2]}</a>
+                             ${termtemplate(pagedetail[1]["terms"][2])}
                         </div>
                         <div class="flex gap-[70px]">
-                            <a href="/#" class="text-[17px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][0]}</a>
-                            <a href="/#" class="text-[17px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][1]}</a>
+                            ${termtemplate(pagedetail[1]["terms"][0])}
+                            ${termtemplate(pagedetail[1]["terms"][1])}
                         </div>`
 
-    
-    
-    const footerData=pagedetail[0]    
-    
+    const footerData=pagedetail[0];    
     footerHeaderDetails.innerHTML=`                       
                         <div class="flex flex-col">
                             <img src="${footerData["brandlogo"]}" class="w-[100px] h-[22px] lg:h-[26px] lg:w-[134px]" alt="brand logo">
                             <span class="mt-[17px] lg:mt-[20px] w-[65%] lg:w-[53%] text-[#90A3BF] text-[13px] lg:text-[17px] leading-[200%] lg:leading-[150%] tracking-[-0.01em]">${footerData["quotes"]}</span>
                         </div>`
 
-
     let templatefooter=``
     function footerCreater(info){
         templatefooter=``
-        console.log(info)
         info.forEach((info,index)=>{
-            console.log(info)
             templatefooter+=`<li class="${index==0 ? "text-[#1A202C]":"text-[#90A3BF]"}
             ${index==0 ? "text-[21px]":"text-[16px] lg:text-[18px]"} ${index==0 ? "font-[600]":"font-[500]"} 
             ${index==0 ? "mb-[19px] lg:mb-[32px]":"mt-[14px] lg:mt-[20px]"} 
             ${index==0 ?"tracking-[-0.02em]":"tracking-[0em] lg:tracking-[-0.02em]"}"><a href="/#">${info}</a></li>`
           })
     }
-
     footerCreater(pagedetail[1]["about"])
-    // console.log(templatefooter)
     footerAbouttem.innerHTML=templatefooter;
-
     footerCreater(pagedetail[1]["socials"])
-    // console.log(templatefooter)
     footerSocialtem.innerHTML=templatefooter;
     footerSocialtemdes.innerHTML=templatefooter;
-
     footerCreater(pagedetail[1]["community"])
     footercommunity.innerHTML=templatefooter;
-
-
+ 
     lastline.innerHTML=`
             <div class="flex justify-between" >
-                <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][0]}</a>
-                <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em]">${pagedetail[1]["terms"][1]}</a>
+                ${termtemplate(pagedetail[1]["terms"][0])}
+                ${termtemplate(pagedetail[1]["terms"][1])}
             </div>
-            <a href="/#" class="text-[13px] text-[#1A202C] font-[600] tracking-[-0.02em] mt-[30px]">${pagedetail[1]["terms"][2]}</a>`
-
-
-
-
-
+            <div class="mt-[30px]">
+                ${termtemplate(pagedetail[1]["terms"][2])}
+            </div>`
 }
-
-
-
 //show and hide the dialog box
 function showleftside(){
     const leftside=document.querySelector(".leftside")
     document.body.classList.add('overflow-hidden');
-    modal.showModal();
-  
+    modal.showModal();  
     if(leftside.classList.contains("hidden")){
        leftside.classList.remove("hidden")}
-  }
-
-  function filterapply(){
+}  
+function filterapply(){
     modal.close();
     document.body.classList.remove('overflow-hidden');
-  };
-
+};
 
 //   dropdown  Pick up
 function locatinpickup(){
     document.querySelector('.Pick-up__button').addEventListener('click', function() {
         document.querySelector('.Pick-up__list').classList.toggle('active');
     });
-    
     var listItems = document.querySelectorAll('.Pick-up__list-item');
     listItems.forEach(function(item) {
         item.addEventListener('click', function() {
         var itemValue = this.getAttribute('data-value');
-        console.log(itemValue);
         var buttonText = this.innerText;
         var button = document.querySelector('.Pick-up__button span');
         button.innerText = buttonText;
@@ -580,7 +449,6 @@ function locatinpickup(){
         document.querySelector('.Pick-up__list').classList.remove('active');
         });
     });
-
 
     // pick up time
     document.querySelector('.pickupTime__button').addEventListener('click', function() {
@@ -591,53 +459,30 @@ function locatinpickup(){
     listItems.forEach(function(item) {
         item.addEventListener('click', function() {
         var itemValue = this.getAttribute('data-value');
-        console.log(itemValue);
         var buttonText = this.innerText;
         var button = document.querySelector('.pickupTime__button span');
         button.innerText = buttonText;
         button.parentNode.setAttribute('data-value', itemValue);
         document.querySelector('.pickupTime__list').classList.remove('active');
         });
-    });
-
-   
+    });  
 }
     
-
-
 //   price slider
-
 var sliderLeft=document.getElementById("slider0to50");
-var sliderRight=document.getElementById("slider51to100");
 var inputMin=document.getElementById("min");
-
 document.getElementById("slider0to50").oninput = function() {
     var element = document.getElementById("slider0to50");
     var value = (element.value - element.min) / (element.max - element.min) * 100;
     element.style.background = 'linear-gradient(to right, #3563E9 0%, #3563E9 ' + value + '%, #90A3BF ' + value + '%, #90A3BF 100%)';
   };
-
-///value updation from input to slider
-//function input update to slider
-function sliderLeftInput(){
-   sliderLeft.value=inputMin.value;
-}
-function sliderRightInput(){
-   sliderRight.value=(inputMax.value);
-}
-
-
-console.log(sliderLeftInput)
-
-function inputMinSliderLeft(){//slider update inputs
+  //slider update inputs
+function inputMinSliderLeft(){
    inputMin.innerHTML=`<span class="text-[#596780] text-[23px] font-[600] tracking-[-0.02em]"> Max.$${sliderLeft.value}.00</span>`
    filter.price[0]=sliderLeft.value;
    filteredproduct=filterProducts(product, filter) ;
-    console.log(filteredproduct)
-    productview() ;
-
+   productview() ;
 }
-
 sliderLeft.addEventListener("change",inputMinSliderLeft);
 
 
@@ -645,15 +490,12 @@ sliderLeft.addEventListener("change",inputMinSliderLeft);
 function locaationdropdown(){
     document.querySelector('.Drop-Off__button').addEventListener('click', function() {
         document.querySelector('.Drop-Off__list').classList.toggle('active');
-    });
-    
+    });    
     var listItems = document.querySelectorAll('.Drop-Off__list-item');
     listItems.forEach(function(item) {
         item.addEventListener('click', function() {
         var itemValue = this.getAttribute('data-value');
-        console.log(itemValue);
         var buttonText = this.innerText;
-        console.log(buttonText)
         var button = document.querySelector('.Drop-Off__button span');
         button.innerText = buttonText;
         button.parentNode.setAttribute('data-value', itemValue);
@@ -661,19 +503,15 @@ function locaationdropdown(){
         });
     });
 
-
     // drop time 
     document.querySelector('.dropoffTime__button').addEventListener('click', function() {
         document.querySelector('.dropoffTime__list').classList.toggle('active');
     });
-    
     var listItems = document.querySelectorAll('.dropoffTime__list-item');
     listItems.forEach(function(item) {
         item.addEventListener('click', function() {
         var itemValue = this.getAttribute('data-value');
-        console.log(itemValue);
         var buttonText = this.innerText;
-        console.log(buttonText)
         var button = document.querySelector('.dropoffTime__button span');
         button.innerText = buttonText;
         button.parentNode.setAttribute('data-value', itemValue);
@@ -682,90 +520,57 @@ function locaationdropdown(){
     });
 }
 
-
 //  swap contentt
-
 function swapValues() {
     const button1 = document.getElementById("Pick-upswap");
     const button2 = document.getElementById("Drop-Offswap");
-
     const temp = button1.textContent.trim();
     const temp2=button2.textContent.trim();
     var itemValue = button1.getAttribute('data-value');
-    console.log("button one",temp);
-
-    var itemValue = button2.getAttribute('data-value');
-    console.log("button two",temp2);
-
-
-    var buttonText = temp2;
     var button = document.querySelector('.Pick-up__button span');
-    button.innerText = buttonText;
+    button.innerText = temp2;
     button.parentNode.setAttribute('data-value', itemValue);
     document.querySelector('.Pick-up__list').classList.remove('active');
-
-
-    var buttonText = temp;
     var button = document.querySelector('.Drop-Off__button span');
-    button.innerText = buttonText;
+    button.innerText = temp;
     button.parentNode.setAttribute('data-value', itemValue);
-    document.querySelector('.Drop-Off__list').classList.remove('active');
-
-   
-    console.log(temp)
-    // button1.parentNode.setAttribute('data-value', temp)
-    // Swap the values
-    
-    // button1.textContent = button2.textContent;
-    // button2.textContent = temp;
-  }
-
-
-
-  
-
-
+    document.querySelector('.Drop-Off__list').classList.remove('active');   
+}
 
 //   skeleton for the webpage
-
+function skelton(info){
+    return `<div class="flex bg-[#dddddd] ${info ?? ""}"></div>`
+}
 const productlistskelton =document.querySelector(".productlist")
 let productsk=``
 for (let i = 0; i < filter.perpage[0]; i++) {
-    productsk+=`<div class="flex w-[100%] h-[240px]  lg:w-[100%] lg:h-[388px] bg-[#dddddd] rounded-[15px]"></div>`
+    productsk+=skelton("w-full h-[240px]  lg:w-full lg:h-[388px] rounded-[15px]")
   }
   productlistskelton.innerHTML=productsk;
 
-
-
 const pickupsk=document.querySelector(".pickup")
 const dropoffsk=document.querySelector(".dropoff")
-let bannersk=`<div class="flex w-[100%] h-[120px]  lg:w-[100%] lg:h-[136px] bg-[#dddddd] rounded-[10px]"></div> `
+let bannersk=skelton("w-full h-[120px]  lg:w-full lg:h-[136px]  rounded-[10px]")
 pickupsk.innerHTML=bannersk;
 dropoffsk.innerHTML=bannersk;
-
 
 const typesk=document.querySelector("#carTypes")
 let typetemplate=``
 for (let i = 0; i < 6; i++) {
-    typetemplate+=`<div class="flex w-[150px] h-[28px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
+    typetemplate+=skelton("w-[150px] h-[28px] rounded-[15px] mt-[27px]")
   }
 typesk.innerHTML=typetemplate;
-
-
 
 const capacitysk=document.querySelector("#carCapacities")
 let capacitytemplate=``
 for (let i = 0; i < 4; i++) {
-    capacitytemplate+=`<div class="flex w-[150px] h-[28px] bg-[#dddddd] rounded-[15px] mt-[27px]"></div>`
+    capacitytemplate+=skelton("w-[150px] h-[28px] rounded-[15px] mt-[27px]")
   }
   capacitysk.innerHTML=capacitytemplate;
 
-
 const footerHeadersk=document.querySelector(".footerHeader")
-footerHeadersk.innerHTML=`<div class="flex w-[120px] h-[38px] lg:w-[168px] lg:h-[46px] bg-[#dddddd] rounded-[30px]"></div>
-                    <div class="flex w-[250px] h-[50px] lg:w-[250px] lg:h-[56px] bg-[#dddddd] rounded-[25px] mt-[16px]"></div>`
-    
-                    
+footerHeadersk.innerHTML=`${skelton("w-[120px] h-[38px] lg:w-[168px] lg:h-[46px] rounded-[30px]")}
+                    ${skelton("w-[250px] h-[50px] lg:w-[250px] lg:h-[56px]  rounded-[25px] mt-[16px]")}`                   
 let footersk=``          
 for (let i = 0; i < 5; i++) {
     footersk+=`<div class="flex w-[110px] h-[22px] bg-[#dddddd] rounded-[15px] ${i==0 ?"mt-[0px]":"mt-[21px]"}"></div>`
@@ -779,35 +584,23 @@ const footercommunitysk=document.querySelector(".footercommunity")
 footercommunitysk.innerHTML=footersk;
 const footerSocialdessk=document.querySelector(".footerSocialdes")
 footerSocialdessk.innerHTML=footersk;
-
-
 const lastlinedes=document.querySelector(".lastlinedes");
-
-
 lastlinedes.innerHTML=`
-                    <div class="flex w-[250px] h-[30px]  bg-[#dddddd] rounded-[25px]">
-                    </div>
+                    ${skelton("w-[250px] h-[30px]  rounded-[25px]")}
                     <div class="flex gap-[70px]">
-                       <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
-                       <div class="flex w-[150px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
+                        ${skelton("w-[150px] h-[30px]  rounded-[25px]")}
+                        ${skelton("w-[150px] h-[30px]  rounded-[25px]")}
                     </div>`
 const lastline=document.querySelector(".lastline")
-
-lastline.innerHTML=` <div class="flex justify-between" >
-                        <div class="flex w-[100px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
-                        <div class="flex w-[100px] h-[30px]  bg-[#dddddd] rounded-[25px]"></div>
+lastline.innerHTML=` <div class="flex justify-between">
+                        ${skelton("w-[100px] h-[30px]  rounded-[25px]")}
+                        ${skelton("w-[100px] h-[30px]  rounded-[25px]")}
                     </div>
-                    <div class="flex w-[200px] h-[30px]  bg-[#dddddd] rounded-[25px] mt-[30px]"></div>`
-
-
-               
-
-
+                    ${skelton("w-[200px] h-[30px] rounded-[25px] mt-[30px]")}`
 
 // header content
 function header(){
 const header=document.querySelector(".header")
-
 header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:hidden">
                     <button aria-label="menu"><img src="images/menu.svg" src="menu button" class="w-[24px] h-[24px]" alt="menu"></button>
                     <a href="/#"><img src="${locationDetails["header"][0]["profileImage"]}" alt="profile" class="w-[28px] h-[28px]"></a>
@@ -816,7 +609,7 @@ header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:
                     <a href="/#"><img src="${locationDetails["header"][0]["brandlogomobile"]}" alt="brand logo" class="w-[100px] h-[24px]"></a>
                     </div>
                     <div class="flex mt-[25px] flex-1 gap-4 justify-between items-center w-full lg:hidden">
-                    <div class="mobsearchlabel flex w-[100%]">
+                    <div class="mobsearchlabel flex w-full">
                         <input type="text" placeholder="&nbsp;Search something here" class="mobsearchinput min-w-[200px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[10px] placeholder-[#596780] placeholder text-[14px]  font-medium flex-1 grow">
                     </div>
                     <div>
@@ -836,8 +629,8 @@ header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:
                     <div class="flex">
                         <img src="${locationDetails["header"][0]["brandlogodes"]}" alt="brand logo" class="w-[166px] h-[28px] mt-[7px]">
                     </div>
-                    <div class="searchlabel flex w-[100%]">
-                        <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Search something here" class="searchinput min-w-[200px] max-w-[492px] w-[100%] border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[70px] placeholder-[#596780] placeholder text-[14px]  font-[500] flex-1 grow">
+                    <div class="searchlabel flex w-full">
+                        <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Search something here" class="searchinput min-w-[200px] max-w-[492px] w-full border-[1px] border-[#C3D4E9] border-solid p-[11px] rounded-[70px] placeholder-[#596780] placeholder text-[14px]  font-[500] flex-1 grow">
                     </div>
                     </div>
                     <div class="lg:flex gap-[20px] ml-[20px] hidden">
@@ -865,5 +658,4 @@ header.innerHTML=`<div class="flex justify-between h-[28px] w-full mb-[35px] lg:
                         <img src="${locationDetails["header"][0]["profileImage"]}" class="w-[44px] h-[44px]" alt="profile">
                     </button>
                     </div> `
-
 }

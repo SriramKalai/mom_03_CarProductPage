@@ -835,6 +835,10 @@ video {
   height: fit-content;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .max-h-\[68px\] {
   max-height: 68px;
 }
@@ -1932,6 +1936,10 @@ input[type="date"] {
     width: 100%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:grid-cols-\[160px\2c 160px\2c 152px\] {
     grid-template-columns: 160px 160px 152px;
   }
@@ -2121,6 +2129,10 @@ input[type="date"] {
     height: auto;
   }
 
+  .lg\:h-full {
+    height: 100%;
+  }
+
   .lg\:max-h-\[160px\] {
     max-height: 160px;
   }
@@ -2290,6 +2302,10 @@ input[type="date"] {
 
   .lg\:text-\[24px\] {
     font-size: 24px;
+  }
+
+  .lg\:text-\[13px\] {
+    font-size: 13px;
   }
 
   .lg\:leading-\[150\%\] {
